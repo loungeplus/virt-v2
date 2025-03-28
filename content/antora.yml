@@ -1,0 +1,19 @@
+---
+name: modules
+title: Experience OpenShift Virtualization
+version: master
+nav:
+- modules/ROOT/nav.adoc
+
+asciidoc:
+  attributes:
+    lab_name: Experience OpenShift Virtualization
+    release-version: master
+    page-pagination: true
+  page-links:
+  - url: https://redhat.com
+    text: Red Hat
+
+  extensions:
+  - ./content/lib/tab-block.js
+  - ./content/lib/remote-include-processor.js
