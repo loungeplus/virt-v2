@@ -46,7 +46,7 @@ NOTE: *Virtualization* パースペクティブは、Red Hat OpenShift Virtualiz
 
 . 左側のサイドメニューで *VirtualMachines* 項目をクリックすると、すべてのVMアセットの仮想化ツリービューが表示されます。
 +
-image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]
 
 . このページを少し見てみましょう。このビューは3つの列に分かれており、左側には管理メニュー、中央にはVMベースのプロジェクトの構成、そして仮想マシンビューがあります。
 
@@ -79,7 +79,7 @@ VMを作成する前に、新しいプロジェクトを作成する必要があ
 +
 . 中央のツリー表示カラムの右上にある「*プロジェクトの作成*」をクリックします。
 +
-image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]
 
 . 「*名前*」フィールドに「*vmexamples-{user}*」と入力してプロジェクト名を指定し、「*作成*」をクリックします。
 +
@@ -95,7 +95,7 @@ NOTE: この新しいプロジェクトをすぐに表示するために、仮�
 +
 NOTE: VM は、InstanceType ウィザードから作成することも、カスタムの YAML 定義を入力して作成することもできますが、今回のラボのシナリオでは、既存のテンプレートをベースとした VM の作成に限定します。
 +
-image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]
 
 . カタログ画面に移動し、利用可能な事前定義のVMテンプレートを示す多数のタイルが表示されます。
 +
@@ -103,7 +103,7 @@ image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=bla
 +
 利用可能なオプションをカスタマイズできる環境で展開している場合は、これらのブートソースのデフォルトでの可用性を変更したり、これらのソースディスクを削除したりすることができます。
 +
-image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
 
 . *Fedora VM* タイルを選択すると、ダイアログが開きます。
 +
@@ -113,18 +113,18 @@ image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blan
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
-. ツリービューに戻り、仮想マシン概要の列に新しいVMの情報が表示されていることを確認します。また、VMが含まれているため、中央の列に*vmexamples-{user}*プロジェクトが表示され、プロジェクト内でハイライトされていることに注目してください。
+. ツリービューに戻り、仮想マシン概要の列に新しいVMの情報が表示されていることを確認します。また、VMが含まれているため、中央の列に *vmexamples-{user}* プロジェクトが表示され、プロジェクト内でハイライトされていることに注目してください。
 +
 . よく見ると、仮想マシン概要の列で、VMステータスが「プロビジョニング中」から「起動中」に変わり、準備が整うと「実行中」に変わっていることが分かります。 
 +
 この間、ストレージプロバイダはテンプレートディスクを複製し、新しく作成された仮想マシンで使用できるようにしています。この処理にかかる時間は、ブートディスクの作成に使用するストレージプロバイダや、システムの現在の負荷によって異なります。
 +
-image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
 
-. 仮想マシンが起動したら、右側の列にある「*概要*」ページでさらに詳しく調べることができます。 
+. 仮想マシンが起動したら、右側の列にある *概要* ページでさらに詳しく調べることができます: 
 +
-*詳細*：このタイルには、VM の名前、ステータス、作成時間、OS、仮想リソース、および作成元のテンプレートなど、VM に関する情報が表示されます。また、VNC 端末の縮小版と、フルスクリーン Web コンソールを起動する機能も含まれています。
-*一般*：このタイルには、ゲストが実行されている Namespace (プロジェクト)、インスタンス名、および Kubernetes ポッドなど、OpenShift 固有の情報が表示されます。
+* *詳細*：このタイルには、VM の名前、ステータス、作成時間、OS、仮想リソース、および作成元のテンプレートなど、VM に関する情報が表示されます。また、VNC 端末の縮小版と、フルスクリーン Web コンソールを起動する機能も含まれています。
+* *一般*：このタイルには、ゲストが実行されている Namespace (プロジェクト)、インスタンス名、および Kubernetes ポッドなど、OpenShift 固有の情報が表示されます。
 * *スナップショット*: このタイルでは、既存のスナップショットに関する情報を表示し、スナップショットをすばやく作成するためのボタンも表示されます。
 * *ネットワーク*: このタイルでは、ソフトウェア定義ネットワーク（SDN）上の仮想マシンのIPアドレスと内部ホスト名が表示されます。高度なネットワークが定義されていない場合、VMは自動的にポッドネットワークに接続されます。このラボの後半では、高度なネットワークオプションと、VMの接続性をカスタマイズする方法について説明します。
 * *使用率*: このタイルでは、CPU、メモリ、ストレージ、ネットワークスループットなど、現在この仮想マシンで使用中のリソースの概要が表示されます。
@@ -171,7 +171,7 @@ image::2025_spring/module-01-intro/21_Storage_Tab.png[link=self, window=blank, w
 +
 image::2025_spring/module-01-intro/22_Network_Tab.png[link=self, window=blank, width=100%]
 +
-VMが作成されると、デフォルトで*Pod Networking*ネットワークの*masquerade*タイプのインターフェースが作成されます。これによりVMがSDNに接続され、VMからOpenShiftクラスターの外部へのアクセスが可能になります。クラスター内の他のVMやPodは、このインターフェースを使用して仮想マシンにアクセスできます。
+VMが作成されると、デフォルトで *Pod Networking* ネットワークの *masquerade* タイプのインターフェースが作成されます。これによりVMがSDNに接続され、VMからOpenShiftクラスターの外部へのアクセスが可能になります。クラスター内の他のVMやPodは、このインターフェースを使用して仮想マシンにアクセスできます。
 +
 さらに、SDN に接続された VM は、ロードバランサータイプのサービスである Route を使用して外部からアクセスすることもできます。また、外部ネットワークへの直接アクセスを許可するように Network Attachment Definition を構成することもできます。この概念については、後ほど詳しく説明します。
 
@@ -191,15 +191,15 @@ image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=bla
 * *Pause*: プロセスは凍結され、CPUリソースやI/Oへのアクセスはできなくなりますが、ハイパーバイザーレベルでVMが使用するメモリは割り当てられたままになります。
 * *Start*: 停止した仮想マシンを起動します。仮想マシンが稼働中の場合は、このボタンはグレー表示されます。
 
-. ショートカットボタンは便利ですが、*アクション* メニューをクリックしてドロップダウンリストに表示されるオプションを選択することでも、これらのオプションやその他のオプションにアクセスできます。
+. ショートカットボタンは便利ですが、*Actions* メニューをクリックしてドロップダウンリストに表示されるオプションを選択することでも、これらのオプションやその他のオプションにアクセスできます。
 +
 image::2025_spring/module-01-intro/24_VM_Actions_Menu.png[link=self, window=blank, width=100%]
 
-.  [*停止] ボタンをクリックし、仮想マシンが [*停止] 状態になるまで待ちます。
+.  *Stop* *ボタンをクリックし、仮想マシンが *Stoped* 状態になるまで待ちます。
 +
 image::2025_spring/module-01-intro/25_VM_Stopped.png[link=self, window=blank, width=100%]
 
-.  「アクション」をクリックすると、「開始」オプションが表示され、「再起動」および「一時停止」オプションはグレー表示されます。
+.  *Actions* をクリックすると、*Start* オプションが表示され、*Restart* および *Pause* オプションはグレー表示されます。
 +
 image::2025_spring/module-01-intro/26_VM_Actions_List_Stopped.png[link=self, window=blank, width=100%]
 
@@ -216,25 +216,25 @@ image::2025_spring/module-01-intro/27_VM_Actions_Paused.png[link=self, window=bl
 
 このセクションでは、VM をシャットダウンせずに、VM を OpenShift ノードから別のノードにマイグレートします。ライブマイグレーションには、VMディスクをソースノードとデスティネーションノードの両方に同時にマウントできるように、*ReadWriteMany* (RWX) ストレージが必要です。OpenShiftの仮想化は、あなたがよく知っている他の仮想化ソリューションとは異なり、各クラスタメンバーにマウントされたモノリシックなデータストアを使用して、多数のVMディスクを多数の異なるVM用に保持するものではありません。代わりに、各VMディスクは、必要とされる時に、必要とされる場所にのみマウントされる独自のボリュームに保存されます。
 
-. 仮想マシンが稼働している物理ノードを確認するには、「概要」ページの「一般」タイルの下にある「*Pod*」名「_virt-launcher-fedora01-uuid_」をクリックします。
+. 仮想マシンが稼働している物理ノードを確認するには、「概要」ページの「一般」タイルの下にある *Pod* 名 _virt-launcher-fedora01-uuid_ をクリックします。
 +
 image::2025_spring/module-01-intro/28_Pod_Name.png[link=self, window=blank, width=100%]
 
-. これにより、Podの詳細ページが表示されます。「*Node*」というセクションヘッダーを検索し、そのPodが実行されているワーカーの名前を確認します。このスクリーンショットでは、_worker-cluster-ttgmt-3_で実行されています。
+. これにより、Podの詳細ページが表示されます。*Node* というセクションヘッダーを検索し、そのPodが実行されているワーカーの名前を確認します。このスクリーンショットでは、_worker-cluster-ttgmt-3_ で実行されています。
 +
 image::2025_spring/module-01-intro/29_Pod_Details_Node.png[link=self, window=blank, width=100%]
 
-.  ブラウザの戻るボタンをクリックして、*概要*ページに戻ります。 。
+. ブラウザの戻るボタンをクリックして、*Overview* ページに戻ります。 
 
- *アクション*メニューを使用して、*マイグレーション* -> *計算*のオプションを選択します。
+. *Actions* メニューを使用して、*Migration* -> *Compute* のオプションを選択します。
 +
 image::2025_spring/module-01-intro/30_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
-. 数秒後、VMのステータスが*Migrating*に変更され、その進捗状況を確認できるようになります。 
+. 数秒後、VMのステータスが *Migrating* に変更され、その進捗状況を確認できるようになります。 
 +
 image::2025_spring/module-01-intro/31_VM_Migrating.png[link=self, window=blank, width=100%]
 
-. 移行が完了すると、VMは「実行中」ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_のポッド名をクリックしてみましょう。
+. 移行が完了すると、VMは「実行中」ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_ のポッド名をクリックしてみましょう。
 +
 image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blank, width=100%]
 
