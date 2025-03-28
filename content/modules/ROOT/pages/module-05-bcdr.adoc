@@ -19,7 +19,7 @@ Red Hatのソリューションには、以下が含まれます。
 * https://docs.trilio.io/kubernetes/appendix/backup-and-restore-virtual-machine-running-on-openshift-virtualization[*Trilio for Kubernetes*^]
 * https://docs.kasten.io/latest/usage/openshift_virtualization.html[*VEEAM Kasten*^]
 
-注記: これは、サポート対象のバックアップおよびリカバリソリューションを提供するパートナーの完全なリストではありません。ストレージまたはデータ保護ベンダーに問い合わせて、その製品とOpenShift Virtualizationの互換性を確認するか、追加情報については https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] を確認してください。
+NOTE:  これは、サポート対象のバックアップおよびリカバリソリューションを提供するパートナーの完全なリストではありません。ストレージまたはデータ保護ベンダーに問い合わせて、その製品とOpenShift Virtualizationの互換性を確認するか、追加情報については https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] を確認してください。
 
 このラボでは、OADP を使用して仮想マシンのバックアップとリストア操作を行います。
 
@@ -46,7 +46,7 @@ image::2025_spring/module-05-bcdr/03_OADP_YAML.png[link=self, window=blank, widt
 +
 OADP* が *kubevirt* プラグインを追加して設定されており、クラスター上で実行されている OpenShift Data Foundations が提供する内部オブジェクトストレージバケットを使用するように設定されていることに注目してください。
 +
-重要: 便宜上、このラボではローカルのオブジェクトバケットにバックアップを行うように設定されていますが、本番環境ではバックアップが外部ストレージシステム、またはクラウドベースのオブジェクトストレージバケットに送られるように設定し、局地的な災害からワークロードを保護する必要があります。
+IMPORTANT:  便宜上、このラボではローカルのオブジェクトバケットにバックアップを行うように設定されていますが、本番環境ではバックアップが外部ストレージシステム、またはクラウドベースのオブジェクトストレージバケットに送られるように設定し、局地的な災害からワークロードを保護する必要があります。
 
 [[create_backup]]
 == 仮想マシンのバックアップを作成
@@ -94,7 +94,7 @@ spec:
 +
 image::2025_spring/module-05-bcdr/05_Create_Backup_YAML.png[link=self, window=blank, width=100%]
 +
-注：前のセクションを完了しておらず、*fedora02* VM がない場合は、上記の YAML のラベルセレクタをインベントリ内の仮想マシンに合わせて変更します。
+NOTE: 前のセクションを完了しておらず、*fedora02* VM がない場合は、上記の YAML のラベルセレクタをインベントリ内の仮想マシンに合わせて変更します。
 
 。ステータス列が「完了」に変わるまで待ちます。これにより、仮想マシンが正常にバックアップされたことが示されます。
 +

@@ -7,7 +7,7 @@
 * コールドマイグレーションは、マイグレーションを開始する前にソースの仮想マシンを停止します。これがデフォルトのマイグレーションタイプです。
 * ウォームマイグレーションでは、ソースの仮想マシンを稼働させたままデータをコピーします。大部分のデータがマイグレーションされると、VM はシャットダウンされ、最終的なデータがデスティネーションにコピーされます。その後、新しい VM が起動され、VM ホスト型アプリケーションのダウンタイムが大幅に短縮されます。
 
-注：マイグレーションツールキットは、OperatorHub で利用可能な Operator を使用して、すでにクラスタにデプロイされています。
+NOTE: マイグレーションツールキットは、OperatorHub で利用可能な Operator を使用して、すでにクラスタにデプロイされています。
 
 Operatorのインストールおよび構成方法については、https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/installing-the-operator_mtv[こちら^]を参照してください。
 
@@ -35,7 +35,7 @@ VMのオペレーティングシステムは、 https://access.redhat.com/articl
 VM名には、小文字（a-z）、数字（0-9）、またはハイフン（-）のみを含める必要があります。最大文字数は253文字です。先頭と末尾の文字は英数字にする必要があります。大文字、スペース、ピリオド（.）、特殊文字を含めることはできません。
 VM名は、OpenShift Virtualization環境内の既存のVM名と重複しないようにする必要があります。
 
-注：*Migration Toolkit for Virtualization* は、ルールに準拠していない VM に自動的に新しい名前を割り当てます。これにより、問題なく移行を進めることができます。
+NOTE: *Migration Toolkit for Virtualization* は、ルールに準拠していない VM に自動的に新しい名前を割り当てます。これにより、問題なく移行を進めることができます。
 
 [[migrating_vms]]
 == VMware からの仮想マシンの移行
@@ -50,7 +50,7 @@ OpenShift への移行用に、VMware 上に 3 層アプリケーションがデ
 
 このラボでは、コールドマイグレーションを使用して、4 つの仮想マシンのうち 3 つをマイグレーションする作業を行います。
 
-注：HAproxy（ロードバランサー）VMのマイグレーションは必要ありません。OpenShiftは、*Service*を使用してSDNに接続されたVMのネットワークトラフィックとロードバランシングをネイティブに処理します。
+NOTE: HAproxy（ロードバランサー）VMのマイグレーションは必要ありません。OpenShiftは、*Service*を使用してSDNに接続されたVMのネットワークトラフィックとロードバランシングをネイティブに処理します。
 
 === VMware環境の確認
 
@@ -86,7 +86,7 @@ image::2025_spring/module-02-mtv/04_vSphere_Datastore.png[link=self, window=blan
 
 VMware vSphereとそこに存在する仮想マシンの確認が完了したので、ウィンドウを閉じてOpenShift Webコンソールに戻ります。
 
-注：*Migration Toolkit for Virtualization (MTV)*は公式にはOpenShift Virtualizationとは別のツールであり、*Virtualization*ペルソナからはアクセスできません。 
+NOTE: *Migration Toolkit for Virtualization (MTV)*は公式にはOpenShift Virtualizationとは別のツールであり、*Virtualization*ペルソナからはアクセスできません。 
 
 左側のメニューで*Virtualization*をクリックし、ドロップダウンから*Administrator*を選択します。
 +
@@ -98,7 +98,7 @@ image::2025_spring/module-02-mtv/05_Admin_Persona.png[link=self, window=blank, w
 +
 image::2025_spring/module-02-mtv/06_MTV_Providers.png[link=self, window=blank, width=100%]
 
-注：MTV 2.4 以降はプロジェクト/ネームスペースを認識し、管理者権限を必要としません。VM のインポートをアプリケーションチームや VM ユーザーに委任することで、各自が自分のペースでセルフサービスで移行できるようになります！
+NOTE: MTV 2.4 以降はプロジェクト/ネームスペースを認識し、管理者権限を必要としません。VM のインポートをアプリケーションチームや VM ユーザーに委任することで、各自が自分のペースでセルフサービスで移行できるようになります！
 
 デフォルトでは、*host*というプロバイダーがあり、これは*OpenShift Virtualization*をターゲットプラットフォームとして表しています。
 
@@ -140,7 +140,7 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 * *ネットワークマップ*: Pod Networking
 * *ストレージマップ*: ocs-external-storagecluster-ceph-rbd
 +
-注：ネットワークマップとストレージマップの両方が、ソースプロバイダー上で現在検出された仮想マシンが使用しているネットワークとデータストアを自動的に検出します。OpenShift側でそれぞれの値が正しく設定されていることを確認するだけで済みます。
+NOTE: ネットワークマップとストレージマップの両方が、ソースプロバイダー上で現在検出された仮想マシンが使用しているネットワークとデータストアを自動的に検出します。OpenShift側でそれぞれの値が正しく設定されていることを確認するだけで済みます。
 
 。「*Create migration plan*」ボタンをクリックします。
 +

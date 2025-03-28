@@ -30,7 +30,7 @@ VMにラベルを追加します。 両方のWindows IISサーバーは同じロ
 +
 image::2025_spring/module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, width=100%]
 +
-注：*Migrating Existing Virtual Machines*（既存の仮想マシンの移行）モジュールを完了した場合は*vmexamples-{user}*、完了していない場合は*vmimported-{user}*という正しいプロジェクトを選択してください。
+NOTE: *Migrating Existing Virtual Machines*（既存の仮想マシンの移行）モジュールを完了した場合は*vmexamples-{user}*、完了していない場合は*vmimported-{user}*という正しいプロジェクトを選択してください。
 
 winweb01-{user}* VMを選択し、*YAML*タブに移動します。
 spec:*セクションを見つけ、*template.metadata*の下の*labels*セクションに次の行を追加します。
@@ -47,7 +47,7 @@ image::2025_spring/module-08-workingvms/12_Imported_VMs_YAML.png[link=self, wind
  *Repeat* the process for the VM *winweb02-{user}*.
 winweb01-{user}* と *winweb02-{user}* の両方の仮想マシンを再起動します。
 +
-注：各仮想マシンのコンソールタブにアクセスして、仮想マシンが適切に動作していることを確認してください。
+NOTE: 各仮想マシンのコンソールタブにアクセスして、仮想マシンが適切に動作していることを確認してください。
 
 === サービスの作成。
 
@@ -113,7 +113,7 @@ image::2025_spring/module-08-workingvms/19_Route_Access.png[link=self, window=bl
 +
 image::2025_spring/module-08-workingvms/20_WebApp_Error.png[link=self, window=blank, width=100%]
 +
-注：接続性の問題に対処するため、データベース VM にサービスを作成して、ウェブサーバーからアクセスできるようにする必要があります。
+NOTE: 接続性の問題に対処するため、データベース VM にサービスを作成して、ウェブサーバーからアクセスできるようにする必要があります。
 
 再度、*Networking* -> *Services* に移動し、*Create Service* をクリックします。 YAML を以下の定義に置き換えます。
 +

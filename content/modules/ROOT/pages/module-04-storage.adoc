@@ -6,7 +6,7 @@ Red Hat OpenShift は、オンプレミスおよびクラウドプロバイダ�
 
 ソフトウェア定義ストレージの例としては、IBM Fusion Data Foundation、OpenShift Data Foundation (ODF)、Portworx などがあります。 
 
-注：このリストは完全なものではありません。サポート対象のストレージソリューションのすべての情報については、https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^]を参照してください。
+NOTE: このリストは完全なものではありません。サポート対象のストレージソリューションのすべての情報については、https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^]を参照してください。
 
 このワークショップでは、プロバイダーにストレージを要求し、VMディスクを保存するために使用されるPVC（Persistent Volume Claim）について説明します。多くのストレージプロバイダーは、デバイスのスナップショットやクローンもサポートしています。CSIドライバーとストレージデバイスがサポートする機能については、必ずベンダーに確認してください。
 
@@ -71,7 +71,7 @@ image::2025_spring/module-04-storage/05_Snapshot_Menu.png[link=self, window=blan
 +
 image::2025_spring/module-04-storage/06_VM_Snapshot_Dialog.png[link=self, window=blank, width=100%]
 +
-注：*cloudinitdisk*がスナップショットに含まれないという警告が表示されます。これは初期ブートに使用される一時的なディスクであるため、想定される動作です。
+NOTE: *cloudinitdisk*がスナップショットに含まれないという警告が表示されます。これは初期ブートに使用される一時的なディスクであるため、想定される動作です。
 
 。 スナップショットには自動的に名前が生成されます。 [保存] をクリックし、ステータスが [操作完了] と表示されるまで待ちます。
 +
@@ -85,7 +85,7 @@ image::2025_spring/module-04-storage/08_VM_Restore_Disabled.png[link=self, windo
 +
 image::2025_spring/module-04-storage/09_Console_Login.png[link=self, window=blank, width=100%]
 +
-注： 「ユーザー名」と「パスワード」の両方の隣にコピーアイコンがあり、「コンソールに貼り付け」ボタンも利用可能です。
+NOTE:  「ユーザー名」と「パスワード」の両方の隣にコピーアイコンがあり、「コンソールに貼り付け」ボタンも利用可能です。
 
 ログインプロセスが大幅に簡素化されます。ログイン後、次のコマンドを実行します。
 +

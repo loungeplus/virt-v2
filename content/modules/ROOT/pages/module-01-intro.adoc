@@ -42,7 +42,7 @@ image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, 
 
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
 
-注：*仮想化*パーソナは、Red Hat OpenShift Virtualizationがインストールされ、適切に構成されている場合のみ利用可能です。このラボ環境では、インストールと構成はすでに実行済みです。
+NOTE: *仮想化*パーソナは、Red Hat OpenShift Virtualizationがインストールされ、適切に構成されている場合のみ利用可能です。このラボ環境では、インストールと構成はすでに実行済みです。
 
 左側のサイドメニューで*VirtualMachines*項目をクリックすると、すべてのVMアセットの仮想化ツリービューが表示されます。
 +
@@ -85,7 +85,7 @@ image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank,
 +
 image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank, width=100%]
 +
-注：この新しいプロジェクトをすぐに表示するために、仮想マシン概要の列が変更されていますが、プロジェクト内にVMが存在しないため、中央の列には表示されません。また、デフォルトでは表示しないオプションがオンになっています。
+NOTE: この新しいプロジェクトをすぐに表示するために、仮想マシン概要の列が変更されていますが、プロジェクト内にVMが存在しないため、中央の列には表示されません。また、デフォルトでは表示しないオプションがオンになっています。
 
 
 [[create_vm]]
@@ -93,7 +93,7 @@ image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank
 
 仮想マシン概要の列から、「*Create VirtualMachine*」ボタンをクリックし、ドロップダウンメニューから「*From template*」を選択します。
 +
-注：VM は、InstanceType ウィザードから作成することも、カスタムの YAML 定義を入力して作成することもできますが、今回のラボのシナリオでは、既存のテンプレートをベースとした VM の作成に限定します。
+NOTE: VM は、InstanceType ウィザードから作成することも、カスタムの YAML 定義を入力して作成することもできますが、今回のラボのシナリオでは、既存のテンプレートをベースとした VM の作成に限定します。
 +
 image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]。
 
