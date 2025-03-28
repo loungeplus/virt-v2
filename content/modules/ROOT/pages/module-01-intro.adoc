@@ -23,11 +23,11 @@ OpenShift クラスタコンソールは {openshift_console_url} で利用可能
 [[virt_persona]]
 == Virtualization パースペクティブへの切り替え
 
- 最初にログインすると、*Developer* パースペクティブが表示され、紹介プロンプトが表示されます。 *Skip tour* ボタンをクリックしてウィンドウを閉じます。
+. 最初にログインすると、*Developer* パースペクティブが表示され、紹介プロンプトが表示されます。 *Skip tour* ボタンをクリックしてウィンドウを閉じます。
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
-. 次に、左上にある「*Developer*」をクリックし、「*Virtualization*」のパースペクティブに切り替えます。
+. 次に、左上にある *Developer* をクリックし、 *Virtualization* のパースペクティブに切り替えます。
 +
 image::2025_spring/module-01-intro/01_Virt_Perspective.png[link=self, window=blank, width=100%]
 
@@ -42,15 +42,15 @@ image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, 
 
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
 
-NOTE: *仮想化* パースペクティブは、Red Hat OpenShift Virtualizationがインストールされ、適切に構成されている場合のみ利用可能です。このラボ環境では、インストールと構成はすでに実行済みです。
+NOTE: *Virtualization* パースペクティブは、Red Hat OpenShift Virtualizationがインストールされ、適切に構成されている場合のみ利用可能です。このラボ環境では、インストールと構成はすでに実行済みです。
 
-左側のサイドメニューで *VirtualMachines* 項目をクリックすると、すべてのVMアセットの仮想化ツリービューが表示されます。
+. 左側のサイドメニューで *VirtualMachines* 項目をクリックすると、すべてのVMアセットの仮想化ツリービューが表示されます。
 +
 image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]。
 
- このページを少し見てみましょう。このビューは3つの列に分かれており、左側には管理メニュー、中央にはVMベースのプロジェクトの構成、そして仮想マシンビューがあります。
+. このページを少し見てみましょう。このビューは3つの列に分かれており、左側には管理メニュー、中央にはVMベースのプロジェクトの構成、そして仮想マシンビューがあります。
 
-左側のメニューは、OpenShiftの仮想化統合機能の主なコントロールです。仮想マシンを構築するためのカタログ、テンプレート、インスタンスタイプなどの仮想化関連の項目や、仮想マシンのストレージとネットワークを設定するメニューが表示されています。
+. 左側のメニューは、OpenShiftの仮想化統合機能の主なコントロールです。仮想マシンを構築するためのカタログ、テンプレート、インスタンスタイプなどの仮想化関連の項目や、仮想マシンのストレージとネットワークを設定するメニューが表示されています。
 +
 image::2025_spring/module-01-intro/05_Left_Menu.png[link=self, window=blank, width=100%]
 
