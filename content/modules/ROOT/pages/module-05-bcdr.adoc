@@ -1,15 +1,15 @@
-=  Backup and Recovery for Virtual Machines
+= 仮想マシンのバックアップとリカバリ
 
-== Introduction
+== はじめに
 
-Data Protection is a major topic of conversation when it comes to any enterprise workload, and there are no shortage of options currently available for backup and recovery of virtual machines with OpenShift Virtualization. Many of these solutions function in the same manner at which they protect pods in OpenShift. They do this by taking a backup of the virtual machine, or a namespace containing multiple virtual machines and store it remotely in an object storage bucket. These backups usually also include the persistent storage volume, alongside the metadata and custom resources that define the virtual machine.
+データ保護は、あらゆる企業ワークロードに関して重要な話題であり、OpenShift 仮想化環境における仮想マシンのバックアップとリカバリには、現在、数多くのオプションが存在します。これらのソリューションの多くは、OpenShiftのポッドを保護するのと同じ方法で機能します。仮想マシン、または複数の仮想マシンを含むネームスペースのバックアップを取得し、オブジェクトストレージバケットにリモートで保存することで、これを実現します。これらのバックアップには通常、仮想マシンを定義するメタデータおよびカスタムリソースに加えて、永続ストレージボリュームも含まれます。
 
-Red Hat Solutions Include:
+Red Hatのソリューションには、以下が含まれます。
 
-* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: A Red Hat operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
-* https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] and https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: 仮想マシンを含む OpenShift オブジェクトのバックアップとリストアを行う、ストレージに依存しない方法を提供する Red Hat オペレーター。
+* https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] およびhttps://docs。 redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
 
-Ecosystem Partner Solutions Include:
+エコシステムパートナーソリューションには以下が含まれます。
 
 * https://www.cohesity.com/press/cohesity-enhances-data-protection-and-cyber-resilience-for-red-hat-openshift-virtualization-workloads/[*Cohesity DataProtect*^]
 * https://docs.netapp.com/us-en/trident/index.html[*NetApp Trident Protect*^]
@@ -19,49 +19,49 @@ Ecosystem Partner Solutions Include:
 * https://docs.trilio.io/kubernetes/appendix/backup-and-restore-virtual-machine-running-on-openshift-virtualization[*Trilio for Kubernetes*^]
 * https://docs.kasten.io/latest/usage/openshift_virtualization.html[*VEEAM Kasten*^]
 
-NOTE: This is not intended to be an exhaustive list of partners offering a supported backup and recovery solution. Please check with your storage or data protection vendor(s) to determine the compatibility of their product with OpenShift Virtualization, or check the https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] for additional information.
+注記: これは、サポート対象のバックアップおよびリカバリソリューションを提供するパートナーの完全なリストではありません。ストレージまたはデータ保護ベンダーに問い合わせて、その製品とOpenShift Virtualizationの互換性を確認するか、追加情報については https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] を確認してください。
 
-In this portion of the lab, we will make use of OADP to perform a virtual machine backup and restore operation.
+このラボでは、OADP を使用して仮想マシンのバックアップとリストア操作を行います。
 
 [[review_operator]]
-== Review the OADP Operator
+== OADP オペレータを確認
 
-. Navigate to the Administrator persona once again, and in the left menu click on *Operators* and then *Installed Operators*.  Ensure that the project *oadp-{user}* is selected. Type *OADP* 
+します。 もう一度管理者パーソナに移動し、左側のメニューで *Operators*、*Installed Operators* の順にクリックします。 プロジェクト *oadp-{user}* が選択されていることを確認します。 *OADP* と入力します 
 +
 image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
 
-. Click on the operator to see it's details.
+と入力します。 オペレータをクリックして詳細を表示します。
 
-. Review the *Provided APIs* available. In this module, the *Backup* and *Restore* functions will be used.
+利用可能な*提供API*を確認します。 このモジュールでは、*バックアップ*および*リストア*機能を使用します。
 +
-image::2025_spring/module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]。
 
-. Use the horizontal scrollbar at the top to navigate to the tab *DataProtectionApplication*. This object represents the configuration of the deployed OADP instance.
+ 上部にある水平スクロールバーを使用して、*DataProtectionApplication* タブに移動します。 このオブジェクトは、デプロイされた OADP インスタンスの構成を表します。
 +
-image::2025_spring/module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]。
 
-. Click on *oadp-dpa* to see the details of the _DataProtectionApplication_ and then click on the *YAML* button at the top to see how it is configured.
+oadp-dpa*をクリックして_DataProtectionApplication_の詳細を表示し、次に上部にある*YAML*ボタンをクリックして、設定方法を確認します。
 +
 image::2025_spring/module-05-bcdr/03_OADP_YAML.png[link=self, window=blank, width=100%]
 +
-Notice that *OADP* has been configured by adding the *kubevirt* plugin and it has been configured to use the internal object storage bucket provided by OpenShift Data Foundations running on your cluster.
+OADP* が *kubevirt* プラグインを追加して設定されており、クラスター上で実行されている OpenShift Data Foundations が提供する内部オブジェクトストレージバケットを使用するように設定されていることに注目してください。
 +
-IMPORTANT: For the sake of convenience our lab is setup to perform the backups to a local object bucket, however in a production environment you would want to ensure that backups are directed to an external storage system, or a cloud-based object storage bucket to ensure that workloads are protected against a localized disaster.
+重要: 便宜上、このラボではローカルのオブジェクトバケットにバックアップを行うように設定されていますが、本番環境ではバックアップが外部ストレージシステム、またはクラウドベースのオブジェクトストレージバケットに送られるように設定し、局地的な災害からワークロードを保護する必要があります。
 
 [[create_backup]]
-== Create a Virtual Machine Backup
+== 仮想マシンのバックアップを作成
 
-You now will perform a backup of the VM *fedora02* which we created in the previous section. The selection of the objects to be backed up is defined by the labels *app* and *vm.kubevirt.io/name*. This includes the VM definition, disks, and additional objects being used by the virtual machine such as config maps and secrets.
+前節で作成したVM *fedora02* のバックアップを実行します。バックアップ対象のオブジェクトの選択は、*app* および *vm.kubevirt.io/name* のラベルで定義されています。これには、VM定義、ディスク、および仮想マシンで使用されている追加オブジェクト（構成マップやシークレットなど）が含まれます。
 
-. Navigate back to the *Operator details* and using the horizontal scrollbar, scroll back until you see the *Backup* tab.
+。*Operator details*に戻り、横スクロールバーを使用して、*Backup*タブが表示されるまでスクロールバックします。
 
-. Click on the *Backup* tab and press the *Create Backup* button.
+*Backup*タブをクリックし、*Create Backup*ボタンをクリックします。
 +
 image::2025_spring/module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, width=100%]
 
-. Switch to the _YAML view_ and replace the default content with the following one:
+。_YAMLビュー_に切り替え、デフォルトのコンテンツを以下のものに置き換えます。
 +
-[source,yaml,role=execute,subs="attributes"]
+[source,yaml,role=execute,subs=「attributes」]
 ----
 ---
 apiVersion: velero.io/v1
@@ -88,46 +88,46 @@ spec:
   snapshotMoveData: false
 ----
 
-. Click the *Create* button at the bottom.
+一番下の「Create」ボタンをクリックします。
 +
-Note that the content of this YAML indicates that any object with the labels *app: fedora02* in the namespace *vmexamples-{user}* will be backed up to the location specified in the *DataProtectionApplication* configuration.
+このYAMLの内容は、*vmexamples-{user}* ネームスペース内の *app: fedora02* ラベルを持つオブジェクトが、*DataProtectionApplication* 構成で指定された場所にバックアップされることを示しています。
 +
 image::2025_spring/module-05-bcdr/05_Create_Backup_YAML.png[link=self, window=blank, width=100%]
 +
-NOTE: If you did not complete the previous section, and you do not have the *fedora02* VM, change the label selectors in the YAML above to match a virtual machine in your inventory.
+注：前のセクションを完了しておらず、*fedora02* VM がない場合は、上記の YAML のラベルセレクタをインベントリ内の仮想マシンに合わせて変更します。
 
-. Wait until the *Status* column changes to *Completed*. This indicates that the virtual machine has been successfully backed up.
+。ステータス列が「完了」に変わるまで待ちます。これにより、仮想マシンが正常にバックアップされたことが示されます。
 +
 image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100%]
 
 [[restore_backup]]
-== Restore From a Backup
+== バックアップからの復元
 
-. In the left-side menu, click on *Virtualization* and then *VirtualMachines*. In the center tree column expand the *vmexamples-{user}* project and click on the *fedora02* VM.
+左側のメニューで、*Virtualization*（仮想化）をクリックし、次に*VirtualMachines*（仮想マシン）をクリックします。中央のツリー列で*vmexamples-{user}*プロジェクトを展開し、*fedora02* VMをクリックします。
 +
 image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=blank, width=100%]
 
-. Stop the virtual machine, and then once it is stopped, click on the *Actions* dropdown and select the option to *Delete* the VM.
+。仮想マシンを停止し、停止したら「*Actions*」ドロップダウンをクリックし、VMを「*Delete*」するオプションを選択します。
 +
-image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]。
 
-. When prompted, click the red *Delete* button to confirm deleting the virtual machine.
+プロンプトが表示されたら、仮想マシンの削除を確認する赤い「*Delete*」ボタンをクリックします。
 +
-image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank, width=100%]。
 
-. The virtual machine will disappear from your inventory.
+仮想マシンがインベントリから消えます。
 +
-image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, width=100%]。
 
-. Click on *Operators* and then *Installed Operators* and select the *OADP Operator* once again. (You may need to switch back to the *OADP-{user}* project.)
+ 「*Operators*」をクリックし、次に「*Installed Operators*」をクリックして、「*OADP Operator*」を再度選択します。（「*OADP-{user}*」プロジェクトに戻す必要があるかもしれません。）
 
-. Use the horizontal navigation bar to locate the the *Restore* tab, click the *Restore* tab, and then press *Create Restore*.
+。 横方向のナビゲーションバーを使用して *Restore* タブを見つけ、*Restore* タブをクリックし、*Create Restore* を押します。
 +
-image::2025_spring/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, width=100%]。
 
-. Switch to the YAML view and replace the content with the following one:
+ YAML ビューに切り替え、コンテンツを以下のものに置き換えます。
 +
-[source,yaml,role=execute,subs="attributes"]
+[source,yaml,role=execute,subs=「attributes」]
 ----
 ---
 apiVersion: velero.io/v1
@@ -147,18 +147,18 @@ spec:
   restorePVs: true
 ----
 
-. Press the *Create* button at the bottom.
+一番下の「Create」ボタンをクリックします。
 +
 image::2025_spring/module-05-bcdr/12_Create_Restore_YAML.png[link=self, window=blank, width=100%]
 
-. Wait until you see that the *Status* column changes to *Completed*.
+「Status」列が「Completed」に変わったら、完了です。
 +
-image::2025_spring/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%].
 
-. Navigate back to *Virtualization* and click  *Virtual Machines* in the left-side menu and confirm that the *fedora02* virtual machine was restored (in the *vmexamples-{user}* project). You can see it's *Created* value should be a quite short time ago.
+ 「*Virtualization*」に戻り、左側のメニューで「*Virtual Machines*」をクリックし、「*fedora02*」仮想マシンが復元されたことを確認します（「*vmexamples-{user}*」プロジェクト内）。Createdの値がかなり前の時間であることがわかります。
 +
 image::2025_spring/module-05-bcdr/14_VM_Restored.png[link=self, window=blank, width=100%]
 
-== Summary
+== まとめ
 
-Protecting virtual machines is a critical aspect of a virtualization platform. OpenShift Virtualization provides multiple methods that enable native protection, for example using OADP, or allowing storage and backup partners to integrate their offerings. If you have questions about how to protect virtual machines, please don't hesitate to ask the proctors for the workshop or reach out to your vendor to determine their compatibility with OpenShift Virtualization.
+仮想マシンの保護は、仮想化プラットフォームの重要な側面です。OpenShift Virtualizationは、ネイティブな保護を可能にする複数の方法を提供しています。例えば、OADPを使用したり、ストレージおよびバックアップパートナーが自社のサービスを統合できるようにしたりします。仮想マシンの保護方法について疑問がある場合は、ワークショップの講師に遠慮なく質問するか、ベンダーに問い合わせてOpenShift Virtualizationとの互換性を確認してください。

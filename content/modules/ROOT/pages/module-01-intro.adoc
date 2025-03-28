@@ -1,247 +1,247 @@
-= Virtual Machine Management
+= 仮想マシン管理
 
-== Introduction
+== はじめに
 
-The beginning section of this lab will introduce you to the basics of creating and managing VMs in OpenShift Virtualization. Starting with OpenShift 4.18 there is a new Virtualization persona and a tree view for virtual machines that make it easier to visualize and manage your virtualization-based assets. After exploring the UI changes, you will see how the web console guides you through the whole process of creating a virtual machine from a pre-defined template. We will then review the properties of that VM, do some basic customizations, and perform actions like live migration, that are often expected of virtual machine administrators.
+このラボの最初のセクションでは、OpenShift Virtualization における仮想マシンの作成と管理の基本について紹介します。OpenShift 4.18 から、仮想化ベースの資産を視覚化し管理しやすくする新しい仮想化パーソナと仮想マシンのツリービューが追加されました。UIの変更について確認した後、事前定義されたテンプレートから仮想マシンを作成するプロセス全体をウェブコンソールがどのようにガイドするかを説明します。その後、そのVMのプロパティを確認し、基本的なカスタマイズを行い、仮想マシン管理者に求められることが多いライブマイグレーションなどの操作を行います。
 
-.*Goals*
+* 目標 *
 
-* Create a new virtual machine
-* Review and modify resources for virtual machines
-* Understand how VM power states are managed using the OpenShift console
-* Live migrate a VM between two hosts
+* 新しい仮想マシンを作成する
+* 仮想マシンのリソースを確認し、変更する
+* OpenShift コンソールを使用して VM の電源状態がどのように管理されるかを理解する
+* 2 つのホスト間で VM をライブマイグレーションする
 
-As a reminder, here are your credentials for the OpenShift Console:
+念のため、OpenShift コンソールへの認証情報は以下の通りです。
 
-Your OpenShift cluster console is available {openshift_console_url}[here^].
+OpenShift クラスタコンソールは {openshift_console_url} で利用可能です。
 
-Your login is available with:
+ログインは以下で可能です。
 
 * *User:* {user}
 * *Password:* {password}
 
 [[virt_persona]]
-== Switch to the Virtualization Persona
+== 仮想化パーソナに切り替えます。
 
-. When you first log in, you will be placed in the *Developer* persona, with an introductory prompt. Click the *Skip tour* button to close the window.
+ 最初にログインすると、*Developer* パーソナに配置され、紹介プロンプトが表示されます。 *Skip tour* ボタンをクリックしてウィンドウを閉じます。
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
-. Now, click on *Developer* in the upper left corner and switch to the *Virtualization* persona.
+。次に、左上にある「*Developer*」をクリックし、「*Virtualization*」のパーソナに切り替えます。
 +
 image::2025_spring/module-01-intro/01_Virt_Perspective.png[link=self, window=blank, width=100%]
 
-. You will be greated by an introductory prompt welcoming you to OpenShift Virtualization. Click the check box for *Do not show this again* and the window will disappear.
+。OpenShift Virtualization への歓迎を告げるプロンプトが表示されます。 *Do not show this again*（次回以降表示しない）のチェックボックスをクリックすると、ウィンドウが消えます。
 +
 image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, width=100%]
 
 [[explore_virt]]
-== Exploring OpenShift Virtualization
+== OpenShift Virtualization の探索
 
-When you arrive in the *Virtualization* view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
+*Virtualization* ビューに到着すると、現在使用中のすべての仮想化リソースの概要を表示する *Overview* ページが表示されます。少し時間を取って探索してみましょう。
 
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
 
-NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
+注：*仮想化*パーソナは、Red Hat OpenShift Virtualizationがインストールされ、適切に構成されている場合のみ利用可能です。このラボ環境では、インストールと構成はすでに実行済みです。
 
-. Click on the *VirtualMachines* item in the left side menu and you will be presented with the virtualization tree view of all VM assets.
+左側のサイドメニューで*VirtualMachines*項目をクリックすると、すべてのVMアセットの仮想化ツリービューが表示されます。
 +
-image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]。
 
-. Lets explore this page for a few moments: notice that this view is divided into 3 columns, the left-side management menu, the central column for organization of VM-based projects, and then the virtual machine view.
+ このページを少し見てみましょう。このビューは3つの列に分かれており、左側には管理メニュー、中央にはVMベースのプロジェクトの構成、そして仮想マシンビューがあります。
 
-. The left menu is the main control for Virtualization integrated functions in OpenShift. We can see virtualization related items like the Catalog, Templates and InstanceTypes to build VMs from, and the menus to configure Storage and Netoworking for virtual machines.
+左側のメニューは、OpenShiftの仮想化統合機能の主なコントロールです。仮想マシンを構築するためのカタログ、テンプレート、インスタンスタイプなどの仮想化関連の項目や、仮想マシンのストレージとネットワークを設定するメニューが表示されています。
 +
 image::2025_spring/module-01-intro/05_Left_Menu.png[link=self, window=blank, width=100%]
 
-. The central column as mentioned is a project view. Like other objects in OpenShift, Projects (which are an abstraction for Kubernetes namespaces), are the boundaries for which permissions and other aspects of using and managing the resources are available to a user. By default there is a slider here that only shows projects with existing VMs. Currently the only project that we can see is *vmimported-{user}*, as it is the only project that we have access to with virtual machines in it.
+。前述の中央の列はプロジェクトビューです。OpenShiftの他のオブジェクトと同様に、プロジェクト（Kubernetesのネームスペースの抽象化）は、ユーザーがリソースを使用および管理する際に必要な権限やその他の要素が適用される境界です。デフォルトでは、ここにスライダーがあり、既存のVMを持つプロジェクトのみが表示されます。現在、表示できるプロジェクトは *vmimported-{user}* のみです。これは、仮想マシンにアクセスできる唯一のプロジェクトだからです。
 +
 image::2025_spring/module-01-intro/06_Project_Tree.png[link=self, window=blank, width=100%]
 
-. In the virtual machine overview column, it will list *All projects* by default, which shows us the VM's for every user in our shared cluster environment. You can sort by columns to make locating VM's easier, or even arrange which columns are visable to make organization easier. This view will change when you highlight a specific project or virtual machine in the center column.
+。仮想マシン概要の列には、デフォルトで「すべてのプロジェクト」がリスト表示され、共有クラスター環境内のすべてのユーザーのVMが表示されます。列を並べ替えることでVMの検索が容易になり、また、列の表示をアレンジして整理することも可能です。中央の列で特定のプロジェクトまたは仮想マシンをハイライトすると、この表示が変更されます。
 +
-image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]。
 
-. From the center column click on the project *vmimported-{user}* to see the virtual machines that are currently deployed and available to your specific user account.
+中央の列からプロジェクト*vmimported-{user}*をクリックすると、現在展開され、特定のユーザーアカウントで利用可能な仮想マシンが表示されます。
 +
 image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%]
 +
-IMPORTANT: While the lab guide is configured to be dynamic and show your specific user account and project names whenever possible, the images in the lab guide are static and may show a different user, please perform these tasks in reference to your own user account and associated projects.
+重要：ラボガイドは、可能な限り動的に設定され、お客様の特定のユーザーアカウントとプロジェクト名を表示するように構成されていますが、ラボガイド内の画像は固定されており、異なるユーザーが表示される場合があります。そのため、これらのタスクは、お客様のユーザーアカウントと関連プロジェクトを参照して実行してください。
 
-. The virtual machine overview column will update to only show the virtual machines in the *vmimported-{user}* project. You should see three VMs listed, but they are not currently turned on, these are for a later part of the lab.
+。仮想マシンの概要の列には、*vmimported-{user}*プロジェクト内の仮想マシンだけが表示されます。3つのVMがリスト表示されますが、現在はオンになっていません。これらはラボの後半部分で使用します。
 +
 image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, width=100%]
 
 [[create_project]]
-== Create a New Project
+== 新しいプロジェクトを作成
 
-. Before creating a VM we need to create a new project. Virtual machines are deployed to a specific project, or namespace, where by default, users without permission to the namespace cannot access, manage, or control them. Administrators can access all projects, and therefore view all virtual machines, however regular users must be given access to projects as needed.
+します。VMを作成する前に、新しいプロジェクトを作成する必要があります。仮想マシンは特定のプロジェクト、またはネームスペースにデプロイされ、デフォルトでは、ネームスペースへのアクセス権限のないユーザーは、仮想マシンにアクセス、管理、制御できません。管理者はすべてのプロジェクトにアクセスでき、すべての仮想マシンを表示できますが、一般ユーザーは必要に応じてプロジェクトへのアクセス権限を付与する必要があります。
 +
-. Click *Create Project* at the top right of the center tree view column.
+。 中央のツリー表示カラムの右上にある「*プロジェクトの作成*」をクリックします。
 +
-image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]。
 
-. In the *Name* field, type *vmexamples-{user}* to name the project, then click *Create*.
+ 「*名前*」フィールドに「*vmexamples-{user}*」と入力してプロジェクト名を指定し、「*作成*」をクリックします。
 +
 image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank, width=100%]
 +
-NOTE: The virtual machine overview column is changed to view this new project immediately, but it does not currently show up in the center column as there are no VMs in the project and we the option to not show it is toggled on by default.
+注：この新しいプロジェクトをすぐに表示するために、仮想マシン概要の列が変更されていますが、プロジェクト内にVMが存在しないため、中央の列には表示されません。また、デフォルトでは表示しないオプションがオンになっています。
 
 
 [[create_vm]]
-== Create a Linux Virtual Machine
+== Linux 仮想マシンの作成。
 
-. From the virtual machine overview column, click on the *Create VirtualMachine* button and select *From template* from the drop-down menu.
+仮想マシン概要の列から、「*Create VirtualMachine*」ボタンをクリックし、ドロップダウンメニューから「*From template*」を選択します。
 +
-NOTE: VMs can also be created from an InstanceType wizard as well as created by entering a custom YAML definition, but for this current lab scenario we are going to stick with creating VMs based on existing templates.
+注：VM は、InstanceType ウィザードから作成することも、カスタムの YAML 定義を入力して作成することもできますが、今回のラボのシナリオでは、既存のテンプレートをベースとした VM の作成に限定します。
 +
-image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]。
 
-. You will be taken to the *Catalog* screen, where a number of tiles will appear showing the available pre-defined VM templates.
+ カタログ画面に移動し、利用可能な事前定義のVMテンプレートを示す多数のタイルが表示されます。
 +
-Reviewing the list of available templates you’ll notice that some have a blue badge which indicates _Source available_. These are templates which are using automatically downloaded and stored template source disks. 
+利用可能なテンプレートのリストを確認すると、一部に青いバッジが付いているものがあることに気づくでしょう。これは、自動的にダウンロードされ保存されたテンプレートソースディスクを使用しているテンプレートであることを示しています。 
 +
-If you were deploying in your own environment where you can customize the options available, you can choose to modify the availability of these boot sources by default, and/or remove these source disks, in favor of creating custom disks for your organization's needs.
+利用可能なオプションをカスタマイズできる環境で展開している場合は、これらのブートソースのデフォルトでの可用性を変更したり、これらのソースディスクを削除したりすることができます。
 +
-image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]。
 
-. Select the *Fedora VM* tile, and a dialog opens.
+ *Fedora VM* タイルを選択すると、ダイアログが開きます。
 +
 image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
 
-. Change the name to *fedora01* and press *Quick create VirtualMachine*.
+名前を*fedora01*に変更し、*Quick create VirtualMachine*をクリックします。
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
-. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our *vmexamples-{user}* project listed in the center column as it contains a VM, and that it is highlighted within the project.
+。ツリービューに戻り、仮想マシン概要の列に新しいVMの情報が表示されていることを確認します。また、VMが含まれているため、中央の列に*vmexamples-{user}*プロジェクトが表示され、プロジェクト内でハイライトされていることに注目してください。
 +
-If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. 
+よく見ると、仮想マシン概要の列で、VMステータスが「プロビジョニング中」から「起動中」に変わり、準備が整うと「実行中」に変わっていることが分かります。 
 +
-During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk, and the current load on the system.
+この間、ストレージプロバイダはテンプレートディスクを複製し、新しく作成された仮想マシンで使用できるようにしています。この処理にかかる時間は、ブートディスクの作成に使用するストレージプロバイダや、システムの現在の負荷によって異なります。
 +
-image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]。
 
-. Once the virtual machine is running we can do some further exploration of the *Overview* page in the right side column.  
+仮想マシンが起動したら、右側の列にある「*概要*」ページでさらに詳しく調べることができます。 
 +
-* *Details*: This tile shows us information about our VM, including it's name, status, creation time, OS, virtual resources, and the template from which it was created. It also contains a minature VNC terminal, and the ability to launch a fullscreen web console.
-* *General*: This tile shows us information specific to OpenShift, including the Namespace (Project), instance name, and Kubernetes pod where the guest is running.
-* *Snapshots*: This tile gives us information about any existing snapshots, and also has the button to quickly create a snapshot.
-* *Network*: This tile gives us the IP address of the virtual machine on the software-defined network (SDN) and it's internal hostname. If no advanced networks are defined, VMs are automatically attached to the pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
-* *Utilization*: This tile gives us an overview of the resources currently in use by this virtual machine, including CPU, Memory, Storage, and Network throughput.
+詳細：このタイルには、VM の名前、ステータス、作成時間、OS、仮想リソース、および作成元のテンプレートなど、VM に関する情報が表示されます。また、VNC 端末の縮小版と、フルスクリーン Web コンソールを起動する機能も含まれています。
+一般：このタイルには、ゲストが実行されている Namespace (プロジェクト)、インスタンス名、および Kubernetes ポッドなど、OpenShift 固有の情報が表示されます。
+* *スナップショット*: このタイルでは、既存のスナップショットに関する情報を表示し、スナップショットをすばやく作成するためのボタンも表示されます。
+* *ネットワーク*: このタイルでは、ソフトウェア定義ネットワーク（SDN）上の仮想マシンのIPアドレスと内部ホスト名が表示されます。高度なネットワークが定義されていない場合、VMは自動的にポッドネットワークに接続されます。このラボの後半では、高度なネットワークオプションと、VMの接続性をカスタマイズする方法について説明します。
+* *使用率*: このタイルでは、CPU、メモリ、ストレージ、ネットワークスループットなど、現在この仮想マシンで使用中のリソースの概要が表示されます。
 +
 image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
-. After you are done looking at the VM details, click the *Events* tab to see some details of the provisioning process that just took place. If there are any issues with the creation of the VM, they will show up on this tab as well. The following events took place during creation:
+。VMの詳細を確認したら、*Events*タブをクリックして、先ほど行われたプロビジョニングプロセスの詳細を確認します。VMの作成に問題がある場合は、このタブにも表示されます。作成中に発生したイベントは以下の通りです。
 +
 image::2025_spring/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
 +
-* A _DataVolume_ was created. _DataVolumes_ are used to manage the creation of a VM disk, abstracting the clone or import process onto OpenShift native storage during the virtual machine's creation workflow.
-* The new  _VM instance_ Fedora01 has been started.
+* _DataVolume_ が作成されました。 _DataVolumes_ は、仮想マシンの作成ワークフロー中に、OpenShift ネイティブストレージへのクローンまたはインポートプロセスを抽象化し、VM ディスクの作成を管理するために使用されます。
+* 新しい _VM インスタンス_ Fedora01 が起動しました。
 
 [[admin_vms]]
-== Administering Virtual Machines
+== 仮想マシンの管理
 
-Administering and using virtual machines is more than simply creating and customizing their configuration. As the platform administrator, we also need to be able to control the VM states and trigger live migrations so that we can balance resources, perform maintenance tasks, and reconfigure nodes.
+仮想マシンの管理および使用は、単にその構成を作成およびカスタマイズする以上のものです。プラットフォーム管理者として、VMの状態を制御し、ライブマイグレーションを実行して、リソースのバランス調整、メンテナンスタスクの実行、ノードの再構成を行う必要があります。
 
-. Click the *Configuration* tab, this is the entry point to obtain more information about, and modify the resources of the virtual machine.
+「構成」タブをクリックすると、仮想マシンのリソースに関する詳細情報の取得や変更を行うことができます。
 +
 image::2025_spring/module-01-intro/19_VM_Configuration.png[link=self, window=blank, width=100%]
 +
-It includes seven subtabs:
+このタブには7つのサブタブがあります。
 +
 image::2025_spring/module-01-intro/20_Configuration_Tab.png[link=self, window=blank, width=100%]
 +
-* *Details*: This tab presents all of the physical features of the VM in a single panel. From here you can make edits to various descriptors and basic hardware configurations including modifying the cpu or memory, changing the hostname, attaching passthrough devices, and modifying the boot order.
-* *Storage*: This tab lists the disks attached to the system and allows you to add new disks to the system. If the guest is configured with the agent, it lists the filesystems and the utilization. Here it is possible to attach _ConfigMaps_, _Secrets_, and _Service Accounts_ as extra disks. This is useful when passing configuration data to the application(s) running in the virtual machine.
-* *Network*: This Tab shows the current network interfaces configured for the VM and allows for you to add new ones.
-* *Scheduling*: This tab includes advanced configuration options indicating where the VM should run and the strategy to follow for eviction. This tab is used to configure (anti)affinity rules, configure node selectors and tolerations, and other behaviors that affect which cluster nodes the VM can be scheduled to.
-* *SSH*: This tab allows you to configure remote access to the machine by creating an SSH service on a configured load-balancer, or by injecting public SSH keys if the feature is enabled.
-* *Initial run*: This tab allows us to configure _cloud-init_ for Linux or _sys-prep_ for Microsoft Windows, including setting the commands to be executed on the first boot, such as the injection of SSH keys, installation of applications, network configuration, and more.
-* *Metadata*: This tab shows current Labels and Annotations applied to the virtual machine. Modifying these values can help us tag our machines for specific purposes, or help us enable automated workflows by uniquely identifying machines.
+* *詳細*: このタブでは、VMの物理的特徴がすべて1つのパネルに表示されます。 ここから、CPUやメモリの変更、ホスト名の変更、パススルードライブの追加、ブート順の変更など、さまざまな記述子や基本ハードウェア構成の編集を行うことができます。
+* *ストレージ*: このタブにはシステムに接続されたディスクがリストされ、新しいディスクをシステムに追加することができます。ゲストがエージェントで構成されている場合、ファイルシステムと使用率がリストされます。ここでは、追加のディスクとして_ConfigMaps_、_Secrets_、および_Service Accounts_をアタッチすることができます。これは、仮想マシンで実行中のアプリケーションに構成データを渡す場合に便利です。
+* *ネットワーク*: このタブには、VM用に現在構成されているネットワークインターフェースが表示され、新しいインターフェースを追加することもできます。
+* *スケジュール*: このタブには、VMの実行場所と、退避時の対応戦略を示す高度な構成オプションが含まれています。このタブは、親和性（反）ルール、ノードセレクタと許容範囲の設定、およびVMがどのクラスタノードにスケジュールされるかに影響するその他の動作の設定に使用されます。
+* *SSH*: このタブでは、構成済みのロードバランサー上で SSH サービスを作成するか、機能が有効になっている場合は公開 SSH 鍵を注入することで、マシンへのリモートアクセスを構成できます。
+* *Initial run*: このタブでは、Linux の _cloud-init_ または Microsoft Windows の _sys-prep_ を構成できます。これには、SSH 鍵の注入、アプリケーションのインストール、ネットワーク構成など、最初の起動時に実行するコマンドの設定が含まれます。
+* *メタデータ*: このタブには、仮想マシンに現在適用されているラベルと注釈が表示されます。これらの値を変更することで、特定の目的のためにマシンにタグ付けしたり、マシンを一意に識別することで自動ワークフローを有効にすることができます。
 
-. You can click on each of these to explore at your leisure, but for introductory purposes, lets focus on storage and networking specifically.
+これらの各項目をクリックして自由に探索することができますが、入門的な目的では、ストレージとネットワークに特に焦点を当ててみましょう。
 
-. List the disks associated with the VM by clicking on the *Storage* tab:
+ストレージ] タブをクリックして、VMに関連付けられているディスクの一覧を表示します。
 +
 image::2025_spring/module-01-intro/21_Storage_Tab.png[link=self, window=blank, width=100%]
 +
-In this environment, the default StorageClass, which defines the source and type of storage used for the disk, is called *ocs-external-storagecluster-ceph-rbd*. This storage is the default type provided by OpenShift Data Foundation (ODF) for running virtual machines. Each storage provider has different storage classes that define the characteristics of the storage backing the VM disk.
+この環境では、ディスクに使用されるストレージのソースとタイプを定義するデフォルトの StorageClass は *ocs-external-storagecluster-ceph-rbd* と呼ばれます。 このストレージは、OpenShift Data Foundation (ODF) が仮想マシンの実行用に提供するデフォルトのタイプです。 各ストレージプロバイダには、VM ディスクをバックアップするストレージの特性を定義する異なるストレージクラスがあります。
 
-. Examine the network interfaces attached to the VM by clicking on the *Network* subtab:
+。VMにアタッチされたネットワークインターフェースを確認するには、*Network*サブタブをクリックします。
 +
 image::2025_spring/module-01-intro/22_Network_Tab.png[link=self, window=blank, width=100%]
 +
-When a VM is created, an interface on the *Pod Networking* network of type *masquerade* is created by default. This connects the VM to the SDN and provides access from the VM to outside the OpenShift cluster. Other VMs, and Pods, in the cluster can access the virtual machine using this interface.
+VMが作成されると、デフォルトで*Pod Networking*ネットワークの*masquerade*タイプのインターフェースが作成されます。これによりVMがSDNに接続され、VMからOpenShiftクラスターの外部へのアクセスが可能になります。クラスター内の他のVMやPodは、このインターフェースを使用して仮想マシンにアクセスできます。
 +
-Furthermore, a VM connected to the SDN can be accessed externally using a Route, or Service with type load balancer, or even have a Network Attachment Definition configured to allow direct access to external networks, a concept we will explore in more depth later.
+さらに、SDN に接続された VM は、ロードバランサータイプのサービスである Route を使用して外部からアクセスすることもできます。また、外部ネットワークへの直接アクセスを許可するように Network Attachment Definition を構成することもできます。この概念については、後ほど詳しく説明します。
 
 [[vm_state]]
-== Controlling Virtual Machine State
+== 仮想マシンの状態の制御
 
-As a user with granted permissions to manage a  Virtualization environment: you can stop, start, restart, pause, and unpause virtual machines from the web console.
+仮想化環境の管理権限を持つユーザーとして、ウェブコンソールから仮想マシンの停止、開始、再起動、一時停止、および一時停止の解除を行うことができます。
 
-. Click the *Overview* tab to return to the summary screen.
+概要] タブをクリックして、サマリー画面に戻ります。
 
-. In the top right corner you will notice shortcut buttons for running state: stop, restart, pause, and start. As well as a dropdown menu title *Actions*.
+右上のコーナーに、実行状態のショートカットボタン（停止、再起動、一時停止、および開始）があります。また、[アクション] というタイトルのドロップダウンメニューもあります。
 +
 image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=blank, width=100%]
 +
-* *Stop*: Starts a graceful shutdown of the Virtual Machine.
-* *Restart*: This will send a signal to the operating system to reboot the Virtual Machine. Guest integrations are needed for this to work properly.
-* *Pause*: The process is frozen without further access to CPU resources and I/O, but the memory used by the VM at the hypervisor level will stay allocated.
-* *Start*: Starts up a stopped virtual machine. It will be greyed out if the machine is running.
+* *Stop*: 仮想マシンの正常なシャットダウンを開始します。
+* *Restart*: オペレーティングシステムにシグナルを送信して仮想マシンを再起動します。 ゲスト統合が適切に機能するために必要です。
+* *Pause*: プロセスは凍結され、CPUリソースやI/Oへのアクセスはできなくなりますが、ハイパーバイザーレベルでVMが使用するメモリは割り当てられたままになります。
+* *Start*: 停止した仮想マシンを起動します。仮想マシンが稼働中の場合は、このボタンはグレー表示されます。
 
-. While the shortcut buttons are handy, you can also access these options and more by clicking on the *Actions* menu and seeing the options available in the drop down list.
+。ショートカットボタンは便利ですが、[アクション] メニューをクリックしてドロップダウンリストに表示されるオプションを選択することでも、これらのオプションやその他のオプションにアクセスできます。
 +
 image::2025_spring/module-01-intro/24_VM_Actions_Menu.png[link=self, window=blank, width=100%]
 
-. Press the *Stop* button and wait until the Virtual Machine is in state *Stopped*.
+。 [*停止] ボタンをクリックし、仮想マシンが [*停止] 状態になるまで待ちます。
 +
 image::2025_spring/module-01-intro/25_VM_Stopped.png[link=self, window=blank, width=100%]
 
-. Clicking on *Actions*, the option *Start* appears, and the options *Restart* and *Pause* are greyed out.
+。 「アクション」をクリックすると、「開始」オプションが表示され、「再起動」および「一時停止」オプションはグレー表示されます。
 +
 image::2025_spring/module-01-intro/26_VM_Actions_List_Stopped.png[link=self, window=blank, width=100%]
 
-. Click *Start*, and wait for the *Running* status.
+をクリックします。 *Start* をクリックし、*Running* ステータスになるまで待ちます。
 
-. Using the *Actions* menu, or the shortcut button, press the *Pause* option. The Virtual Machine state will change to *Paused*.
+Actions* メニューまたはショートカットボタンを使用して、*Pause* オプションをクリックします。 仮想マシンの状態が *Paused* に変わります。
 +
 image::2025_spring/module-01-intro/27_VM_Actions_Paused.png[link=self, window=blank, width=100%]
 
-. Unpause the Virtual Machine using the *Actions* menu and the option *Unpause*, or by using the shortcut button.
+。 *Actions* メニューの *Unpause* オプションを使用するか、ショートカットボタンを使用して仮想マシンを再開します。
 
 [[live_migrate]]
-== Live Migrate a Virtual Machine
+== 仮想マシンのライブマイグレーション
 
-In this section, we will migrate the VM from one OpenShift node to another without shutting down the VM. Live migration requires *ReadWriteMany* (RWX) storage so that the VM disks can be mounted on both the source and destination nodes at the same time. OpenShift Virtualization, unlike other virtualization solutions that you may be familiar with, does not use monolithic datastores mounted to each cluster member that hold many VM disks for many different VMs. Instead, each VM disk is stored in its own volume that is only mounted when and where it's needed.
+このセクションでは、VM をシャットダウンせずに、VM を OpenShift ノードから別のノードにマイグレートします。ライブマイグレーションには、VMディスクをソースノードとデスティネーションノードの両方に同時にマウントできるように、*ReadWriteMany* (RWX) ストレージが必要です。OpenShiftの仮想化は、あなたがよく知っている他の仮想化ソリューションとは異なり、各クラスタメンバーにマウントされたモノリシックなデータストアを使用して、多数のVMディスクを多数の異なるVM用に保持するものではありません。代わりに、各VMディスクは、必要とされる時に、必要とされる場所にのみマウントされる独自のボリュームに保存されます。
 
-. To see the physical node that the virtual machine is running on, click on the *Pod* name _virt-launcher-fedora01-uuid_ found under the *General* tile on the *Overview* page.
+。仮想マシンが稼働している物理ノードを確認するには、「概要」ページの「一般」タイルの下にある「*Pod*」名「_virt-launcher-fedora01-uuid_」をクリックします。
 +
 image::2025_spring/module-01-intro/28_Pod_Name.png[link=self, window=blank, width=100%]
 
-. This will bring up the Pod details page. Search for the section header called *Node* and see the name of the worker that the pod is running on. In this screenshot it is running on _worker-cluster-ttgmt-3_.
+。これにより、Podの詳細ページが表示されます。「*Node*」というセクションヘッダーを検索し、そのPodが実行されているワーカーの名前を確認します。このスクリーンショットでは、_worker-cluster-ttgmt-3_で実行されています。
 +
 image::2025_spring/module-01-intro/29_Pod_Details_Node.png[link=self, window=blank, width=100%]
 
-. Click the back button in your browser to return to the *Overview* page. 
+。 ブラウザの戻るボタンをクリックして、*概要*ページに戻ります。 。
 
-. Using the *Actions* menu, select the option for *Migration* -> *Compute*.
+ *アクション*メニューを使用して、*マイグレーション* -> *計算*のオプションを選択します。
 +
 image::2025_spring/module-01-intro/30_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
-. After a few seconds, the VM will change the status to *Migrating*, and you can follow it's progress. 
+。数秒後、VMのステータスが*Migrating*に変更され、その進捗状況を確認できるようになります。 
 +
 image::2025_spring/module-01-intro/31_VM_Migrating.png[link=self, window=blank, width=100%]
 
-. When the migration is complete the VM will return to the *Running* status, but it will be living on a new node. Let's click on our _virt-launcher-fedora01-uuid_ pod name to verify.
+。移行が完了すると、VMは「実行中」ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_のポッド名をクリックしてみましょう。
 +
 image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blank, width=100%]
 
-. We can now see that the virtual machine is living on a new node, in the image _worker-cluster-ttgmt-2_, and that the pod itself now resides in a new pod with a new unique ID as the live migration process transfers the VM instance to a new pod on a new worker node nondisruptively.
+。仮想マシンが新しいノード（_worker-cluster-ttgmt-2_）上で稼働していること、および、ライブマイグレーションプロセスによりVMインスタンスが新しいワーカーノード上の新しいポッドに中断なく転送されたため、ポッド自体が新しいポッドに新しい一意のIDで存在していることが確認できます。
 +
 image::2025_spring/module-01-intro/33_Pod_Details_Node_Migrated.png[link=self, window=blank, width=100%]
 
-== Summary
+== まとめ
 
-In this lab, we did an overview of the Virtualization management environment in OpenShift Virtualization, and performed some basic virtual machine management tasks, including state management and live migration between physical hosts. Both of these are common and often necessary tasks as platform administrators and a great way to familiarize yourself with some basic features available when working with VMs in OpenShift Virtualization.
+このラボでは、OpenShift Virtualizationの仮想化管理環境の概要を説明し、状態管理や物理ホスト間のライブマイグレーションなど、基本的な仮想マシン管理タスクをいくつか実行しました。これらはどちらも、プラットフォーム管理者としてよく必要となる一般的なタスクであり、OpenShift VirtualizationでVMを操作する際に利用できる基本的な機能に慣れるための良い方法です。
