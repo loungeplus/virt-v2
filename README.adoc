@@ -1,3 +1,7 @@
+以下のVirtualization Roadshowコンテンツの日本語訳リポジトリです。
+
+https://github.com/rhpds/openshift-virt-roadshow-cnv-multi-user/tree/network
+
 Welcome to the OpenShift Virtualization Roadshow!
 
 == Introduction
