@@ -86,7 +86,7 @@ image::2025_spring/index/00_openshift_comparison_chart.png[link=self, window=bla
 
 == 次の手順
 
-OpenShift 仮想化についてさらに詳しく知りたい方は、https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization[ランディングページ] にアクセスし、https://docs. redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/about[ドキュメント^]、当社のhttps://www.redhat.com/en/interactive-experiences#virtualization[インタラクティブな体験^]をお楽しみいただくか、https://www.youtube. com/playlist?list=PLaR6Rq6Z4IqeQeTosfoFzTyE_QmWZW6n_[YouTube^].
+OpenShift 仮想化についてさらに詳しく知りたい方は、 https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization[ランディングページ] にアクセスし、 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/about[ドキュメント^] 、当社の https://www.redhat.com/en/interactive-experiences#virtualization[インタラクティブな体験^] をお楽しみいただくか、 https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqeQeTosfoFzTyE_QmWZW6n_[YouTube^]
 
 == ラボ環境の要件
 
@@ -96,7 +96,7 @@ OpenShift 仮想化についてさらに詳しく知りたい方は、https://ww
 
 === OpenShiftコンソールへの認証情報
 
-OpenShiftクラスタコンソールは、{openshift_console_url} [ここに^]で利用可能です。
+OpenShiftクラスタコンソールは、{openshift_console_url}[ここ^] で利用可能です。
 
 ログインは以下で可能です。
 

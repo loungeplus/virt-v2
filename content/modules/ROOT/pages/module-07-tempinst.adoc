@@ -29,7 +29,7 @@ image::2025_spring/module-07-tempinst/00_VMs_Stopped.png[link=self, window=blank
 
 デフォルトでは、Red Hat OpenShift Virtualization が提供する事前構成済みのテンプレートはカスタマイズできません。ただし、テンプレートを複製して、特定のワークロードに合わせて調整し、特定のワークロード用の特定のタイプの仮想マシンを簡単に要求できるようにすることは可能です。このラボのこのセクションでは、まさにこの作業を行います。エンドユーザーにオンデマンドで事前構成済みのデータベースサーバーを提供するテンプレートを作成します。
 
-。まず、左側のメニューで「テンプレート」をクリックし、プロジェクトとして「openshift」を選択します。「openshift」プロジェクトを表示するには、「デフォルトのプロジェクトを表示」ボタンを切り替える必要があるかもしれません。
+. まず、左側のメニューで「テンプレート」をクリックし、プロジェクトとして「openshift」を選択します。「openshift」プロジェクトを表示するには、「デフォルトのプロジェクトを表示」ボタンを切り替える必要があるかもしれません。
 +
 image::2025_spring/module-07-tempinst/01_Project_Toggle.png[link=self, window=blank, width=100%]
 +
@@ -39,11 +39,11 @@ image::2025_spring/module-07-tempinst/01_Template_List.png[link=self, window=bla
 +
 image::2025_spring/module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
 
-。*centos-stream9-server-small*のテンプレート名をクリックすると、デフォルトのテンプレートは編集できない旨のメッセージが表示され、クローンを作成するか尋ねられます。*新しいカスタムテンプレートを作成*オプションをクリックします。
+. *centos-stream9-server-small*のテンプレート名をクリックすると、デフォルトのテンプレートは編集できない旨のメッセージが表示され、クローンを作成するか尋ねられます。*新しいカスタムテンプレートを作成*オプションをクリックします。
 +
 image::2025_spring/module-07-tempinst/03_Create_Custom_Template.png[link=self, window=blank, width=100%]
 
-。「テンプレートを複製」という新しいメニューが表示されます。以下の値を入力し、完了したら「複製」ボタンをクリックします。
+. 「テンプレートを複製」という新しいメニューが表示されます。以下の値を入力し、完了したら「複製」ボタンをクリックします。
 +
 * *テンプレート名:* centos-stream9-server-db-small
 * *テンプレートプロジェクト:* vmexamples-{user}
@@ -88,19 +88,19 @@ image::2025_spring/module-07-tempinst/10_Cloud_Init_Script.png[link=self, window
 +
 image::2025_spring/module-07-tempinst/11_User_Templates.png[link=self, window=blank, width=100%]
 
-。 タイルをクリックすると、VMの起動画面が表示されます。 *Quick create VirtualMachine*（仮想マシンのクイック作成）ボタンをクリックします。
+.  タイルをクリックすると、VMの起動画面が表示されます。 *Quick create VirtualMachine*（仮想マシンのクイック作成）ボタンをクリックします。
 +
 image::2025_spring/module-07-tempinst/12_Quick_Create_Template.png[link=self, window=blank, width=100%]
 
-。仮想マシンが起動すると、[概要] ページに、テンプレートから作成され、定義した追加リソースが含まれていることが表示されます。あとは、*MariaDB* がインストールされていることを確認するだけです。
+. 仮想マシンが起動すると、[概要] ページに、テンプレートから作成され、定義した追加リソースが含まれていることが表示されます。あとは、*MariaDB* がインストールされていることを確認するだけです。
 +
 image::2025_spring/module-07-tempinst/13_VM_From_Template.png[link=self, window=blank, width=100%]
 
-。 上部にある「*コンソール*」タブをクリックし、提供された「*ゲストログイン認証情報*」と「*コピー*」および「*コンソールに貼り付け*」ボタンを使用して、仮想マシンのコンソールにログインします。
+.  上部にある「*コンソール*」タブをクリックし、提供された「*ゲストログイン認証情報*」と「*コピー*」および「*コンソールに貼り付け*」ボタンを使用して、仮想マシンのコンソールにログインします。
 +
 image::2025_spring/module-07-tempinst/14_VM_Console.png[link=self, window=blank, width=100%]
 
-。仮想マシンにログインしたら、次のコマンドを実行してMariaDBのインストールをテストします。
+. 仮想マシンにログインしたら、次のコマンドを実行してMariaDBのインストールをテストします。
 +
 [source,sh,role=execute]
 ----
@@ -361,11 +361,11 @@ image::2025_spring/module-07-tempinst/32_Windows_Template_Running.png[link=self,
 
 このセクションでは、インスタンスタイプを使用してVMをプロビジョニングする方法を説明します。
 
-。 まず、左側のメニューで「カタログ」をクリックします。 デフォルトのカタログ項目として「インスタンスタイプ」が表示されます。
+.  まず、左側のメニューで「カタログ」をクリックします。 デフォルトのカタログ項目として「インスタンスタイプ」が表示されます。
 +
 image::2025_spring/module-07-tempinst/33_Left_Menu_Catalog.png[link=self, window=blank, width=100%]
 
-。インスタンスタイプを使用する最初のステップは、起動するボリュームを選択することです。起動ソースを提供するテンプレートと同様に、これらの起動ソースは、InstanceTypeでプロビジョニングされたゲストで使用できます。openshift-virtualization-os-images*プロジェクトを選択すると、含まれるボリュームを確認できます。または、*Add volume*ボタンを使用して独自のボリュームをアップロードすることもできます。
+. インスタンスタイプを使用する最初のステップは、起動するボリュームを選択することです。起動ソースを提供するテンプレートと同様に、これらの起動ソースは、InstanceTypeでプロビジョニングされたゲストで使用できます。openshift-virtualization-os-images*プロジェクトを選択すると、含まれるボリュームを確認できます。または、*Add volume*ボタンを使用して独自のボリュームをアップロードすることもできます。
 +
 image::2025_spring/module-07-tempinst/34_Volume_Boot.png[link=self, window=blank, width=100%]。
 
@@ -388,7 +388,7 @@ image::2025_spring/module-07-tempinst/36_Select_InstanceType.png[link=self, wind
 +
 image::2025_spring/module-07-tempinst/37_InstanceType_Resources.png[link=self, window=blank, width=100%]
 
-。インスタンスタイプを使用してプロビジョニングを行う際に最後に完了させる必要があるセクションは、テンプレートセクションと類似しています。仮想マシンに名前を付け、バックアップディスクに使用するストレージクラスを選択する必要があります。デフォルトでは、VMに名前が生成され、デフォルトのストレージクラスが選択されます。問題がなければ、[*Create VirtualMachine*] ボタンをクリックします。
+. インスタンスタイプを使用してプロビジョニングを行う際に最後に完了させる必要があるセクションは、テンプレートセクションと類似しています。仮想マシンに名前を付け、バックアップディスクに使用するストレージクラスを選択する必要があります。デフォルトでは、VMに名前が生成され、デフォルトのストレージクラスが選択されます。問題がなければ、[*Create VirtualMachine*] ボタンをクリックします。
 +
 image::2025_spring/module-07-tempinst/38_VM_Details.png[link=self, window=blank, width=100%]。
 
