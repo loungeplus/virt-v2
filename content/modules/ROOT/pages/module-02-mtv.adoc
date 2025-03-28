@@ -9,7 +9,7 @@
 
 NOTE: マイグレーションツールキットは、OperatorHub で利用可能な Operator を使用して、すでにクラスタにデプロイされています。
 
-Operatorのインストールおよび構成方法については、https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/installing-the-operator_mtv[こちら^]を参照してください。
+Operatorのインストールおよび構成方法については、 https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/installing-the-operator_mtv[こちら^] を参照してください。
 
 ご自身のニーズに合わせて Migration Toolkit for Virtualization を構成する方法についてさらに詳しくお知りになりたい場合は、次のリンク先のドキュメントを参照してください。
 
@@ -17,11 +17,11 @@ Operatorのインストールおよび構成方法については、https://docs
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#rhv-prerequisites_mtv[Red Hat Virtualization^]
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#vmware-prerequisites_mtv[VMware vSphere^].
 
-*目標*
+.*目標*
 
 * VMware vSphere 環境を調査する
 * Migration Toolkit for Virtualization (MTV) の構成を確認する
-* 移行計画を作成する
+* マイグレーションプランを作成する
 * VM を OpenShift Virtualization に移行する
 
 [[prerequisites]]
@@ -50,35 +50,35 @@ OpenShift への移行用に、VMware 上に 3 層アプリケーションがデ
 
 このラボでは、コールドマイグレーションを使用して、4 つの仮想マシンのうち 3 つをマイグレーションする作業を行います。
 
-NOTE: HAproxy（ロードバランサー）VMのマイグレーションは必要ありません。OpenShiftは、*Service*を使用してSDNに接続されたVMのネットワークトラフィックとロードバランシングをネイティブに処理します。
+NOTE: HAproxy（ロードバランサー）VMのマイグレーションは必要ありません。OpenShiftは、*Service* を使用してSDNに接続されたVMのネットワークトラフィックとロードバランシングをネイティブに処理します。
 
 === VMware環境の確認
 
 vSphereのリソース（データストアやポートグループなど）をOpenShiftのストレージクラスやネットワークアタッチメント定義にマッピングするプロセスを理解するために、マイグレーションのソース環境を確認することから始めましょう。
 
-. VMware vCenter に移動します：https://{vcenter_console}[vCenter Console^]。
-*Launch vSphere Client* をクリックします。
-次の認証情報でログインします。
-- *User:* {vcenter_full_user
-- *Password:* {vcenter_password
+. VMware vCenter に移動します： https://{vcenter_console}[vCenter Console^]
+. *Launch vSphere Client* をクリックします。
+. 次の認証情報でログインします。
+- *User:* {vcenter_full_user}
+- *Password:* {vcenter_password}
 
 . デフォルトでは、ナビゲーションツリーの一番上に *インベントリ* ビューが表示され、このオブジェクトを表示する権限がないというメッセージが表示されます。これは現在のユーザーアカウントでは想定される動作です。
 +
 image::2025_spring/module-02-mtv/00_VMware_First_Login.png[link=self, window=blank, width=100%]
 
-ロードショー] という名前のフォルダと、その下に 4 つの VM があるまで、[ワークロード] アイコンをクリックしてナビゲーションツリーを展開します。
+. *Roadshow* という名前のフォルダと、その下に 4 つの VM があるまで、*Workloads* アイコンをクリックしてナビゲーションツリーを展開します。
 +
 image::2025_spring/module-02-mtv/01_Workload_VM_List.png[link=self, window=blank, width=100%]
 
-. フォルダ内の各仮想マシンの詳細を表示するには、画面上部の*VMs*アイコンをクリックします。
+. フォルダ内の各仮想マシンの詳細を表示するには、画面上部の *VMs* アイコンをクリックします。
 +
 image::2025_spring/module-02-mtv/02_VM_Details.png[link=self, window=blank, width=100%]
 
-.  [*Networks*] ビューに変更し、ツリーを展開して仮想マシンで使用されているポートグループを表示します。 名前が *segment-migrating-to-ocpvirt* であることに注意してください。
+. *Networks* ビューに変更し、ツリーを展開して仮想マシンで使用されているポートグループを表示します。 名前が *segment-migrating-to-ocpvirt* であることに注意してください。
 +
 image::2025_spring/module-02-mtv/03_vSphere_Network.png[link=self, window=blank, width=100%]
 
-最後に、[Datastores] ビューに移動して使用中のデータストアを確認します。ツリーを展開して *RS00* データセンターにアタッチされているデータストアを確認し、必要に応じて [VMs] サブタブに移動して各仮想マシンで使用されている容量を表示します。
+. 最後に、*Datastores* ビューに移動して使用中のデータストアを確認します。ツリーを展開して *RS00* データセンターにアタッチされているデータストアを確認し、必要に応じて *VMs* サブタブに移動して各仮想マシンで使用されている容量を表示します。
 +
 image::2025_spring/module-02-mtv/04_vSphere_Datastore.png[link=self, window=blank, width=100%]
 
@@ -88,51 +88,51 @@ VMware vSphereとそこに存在する仮想マシンの確認が完了したの
 
 NOTE: *Migration Toolkit for Virtualization (MTV)*は公式にはOpenShift Virtualizationとは別のツールであり、*Virtualization*ペルソナからはアクセスできません。 
 
-左側のメニューで*Virtualization*をクリックし、ドロップダウンから*Administrator*を選択します。
+. 左側のメニューで *Virtualization* をクリックし、ドロップダウンから *Administrator* を選択します。
 +
 image::2025_spring/module-02-mtv/05_Admin_Persona.png[link=self, window=blank, width=100%]
 
-左側のメニューで *Migration* -> *Providers for virtualization* に移動します。
+. 左側のメニューで *Migration* -> *Providers for virtualization* に移動します。
 
-ページの上部にあるプロジェクト *mtv-{user}* を選択します。
+. ページの上部にあるプロジェクト *mtv-{user}* を選択します。
 +
 image::2025_spring/module-02-mtv/06_MTV_Providers.png[link=self, window=blank, width=100%]
 
 NOTE: MTV 2.4 以降はプロジェクト/ネームスペースを認識し、管理者権限を必要としません。VM のインポートをアプリケーションチームや VM ユーザーに委任することで、各自が自分のペースでセルフサービスで移行できるようになります！
 
-デフォルトでは、*host*というプロバイダーがあり、これは*OpenShift Virtualization*をターゲットプラットフォームとして表しています。
+デフォルトでは、*host* というプロバイダーがあり、これは *OpenShift Virtualization* をターゲットプラットフォームとして表しています。
 
-さらに、このラボでは、*vmware*という追加のプロバイダーがすでに構成されており、これは先ほど調査したVMware vSphereクラスターのエンドポイントアドレスを持っていることがわかります。
+さらに、このラボでは、*vmware* という追加のプロバイダーがすでに構成されており、これは先ほど調査したVMware vSphereクラスターのエンドポイントアドレスを持っていることがわかります。
 
 === マイグレーションプランの作成
 
-環境の確認を終え、プロバイダーも作成したので、次は移行プランを作成します。このプランでは、VMware vSphere から Red Hat OpenShift Virtualization へ移行するVMを選択し、移行の実行方法の詳細を指定します。
+環境の確認を終え、プロバイダーも作成したので、次はマイグレーションプランを作成します。このプランでは、VMware vSphere から Red Hat OpenShift Virtualization へ移行するVMを選択し、移行の実行方法の詳細を指定します。
 
-左側のメニューで *移行* -> *仮想化用プラン* に移動し、*プランの作成* をクリックします。
+. 左側のメニューで *Migration* -> *Plans for virtualization* に移動し、*Create Plan* をクリックします。
 +
 image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=blank, width=100%]。
 
-移行元のソースプロバイダを選択するよう求められます。*VMware*のタイルをクリックします。
+. 移行元のソースプロバイダを選択するよう求められます。*VMware* のタイルをクリックします。
 +
 image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window=blank, width=100%]。
 
-環境内の多数の仮想マシンが表示されます。用意されている検索バーを使用して、選択したい仮想マシンを検索するには、ユーザーアカウント：*{user}*を検索します。
+. 環境内の多数の仮想マシンが表示されます。用意されている検索バーを使用して、選択したい仮想マシンを検索するには、ユーザーアカウント：*{user}* を検索します。
 +
 image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%] 
 
-次のページで、移動したい3つのVMを選択します。
+. 次のページで、移動したい3つのVMを選択します:
 
 * database-{user}
 * winweb01-{user}
 * winweb02-{user}
 
-をクリックします。 *次へ*をクリックします。
+. *Next* をクリックします。
 +
 image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
-. 次の画面では、移行計画の詳細を入力するよう求められます。いくつかの詳細項目はすでに記入されていますが、VMが正しいネームスペースに配置され、ネットワークとストレージのオプションが正しくマッピングされるように、いくつかの軽微な修正を行う必要があります。
+. 次の画面では、マイグレーションプランの詳細を入力するよう求められます。いくつかの詳細項目はすでに記入されていますが、VMが正しいネームスペースに配置され、ネットワークとストレージのオプションが正しくマッピングされるように、いくつかの軽微な修正を行う必要があります。
 +
-移行計画に以下の値を入力してください。
+マイグレーションプランに以下の値を入力してください: 
 
 * *計画名*: move-webapp-vmware
 * *ターゲットプロバイダ*: host
@@ -142,27 +142,27 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 +
 NOTE: ネットワークマップとストレージマップの両方が、ソースプロバイダー上で現在検出された仮想マシンが使用しているネットワークとデータストアを自動的に検出します。OpenShift側でそれぞれの値が正しく設定されていることを確認するだけで済みます。
 
-. 「*Create migration plan*」ボタンをクリックします。
+. *Create migration plan* ボタンをクリックします。
 +
 image::2025_spring/module-02-mtv/11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
 
-. 新しい画面に移動し、移行計画が準備中であることが表示されます。
+. 新しい画面に移動し、マイグレーションプランが準備中であることが表示されます。
 +
 image::2025_spring/module-02-mtv/12_Migration_Plan_Unready.png[link=self, window=blank, width=100%]
 
-しばらくすると、プランが*準備完了*になります。青い「移行を開始」ボタンをクリックして、移行プロセスを開始します。
+. しばらくすると、プランが *Ready* になります。青い *Start Migration* ボタンをクリックして、移行プロセスを開始します。
 +
 image::2025_spring/module-02-mtv/13_Migration_Plan_Ready.png[link=self, window=blank, width=100%]
 
-移行を開始する確認ボックスが表示されますので、「開始」ボタンをクリックします。
+. 移行を開始する確認ボックスが表示されますので、*Start* ボタンをクリックします。
 +
 image::2025_spring/module-02-mtv/14_Confirm_Migrate_Start.png[link=self, window=blank, width=100%]。
 
-画面中央にプログレスバーが表示され、「*0 of 3 VMs migrated*」というステータスが表示されます。
+. 画面中央にプログレスバーが表示され、*0 of 3 VMs migrated* というステータスが表示されます。
 +
 image::2025_spring/module-02-mtv/15_VMs_Migrating.png[link=self, window=blank, width=100%]
 
-. 「3 VMs migrated*」の「*0」をクリックすると、移行プロセスに関する詳細情報が表示されます。
+. *0 of 3 VMs migrated* のリンクをクリックすると、移行プロセスに関する詳細情報が表示されます。
 +
 image::2025_spring/module-02-mtv/16_VMs_Migrating_Details.png[link=self, window=blank, width=100%]
 
@@ -171,13 +171,13 @@ image::2025_spring/module-02-mtv/16_VMs_Migrating_Details.png[link=self, window=
 image::2025_spring/module-02-mtv/17_VM_Migration_Stages.png[link=self, window=blank, width=100%]
 +
 
-IMPORTANT:仮想マシンの移行には10Gbpsのネットワークを推奨しますが、当社のシミュレートされたラボ環境にはありません。このため、多くの参加者が同じタスクを並行して実行すると、実際の環境よりもこのタスクの実行速度が大幅に低下する可能性があります。このプロセスが完了するまでお待ちください。移行はバックグラウンドで完了するので、ロードショーの他のセクションに進むことができます。これらのマシンについては、後のモジュールで作業を再開します。
+IMPORTANT: 仮想マシンの移行には10Gbpsのネットワークを推奨しますが、当社のシミュレートされたラボ環境にはありません。このため、多くの参加者が同じタスクを並行して実行すると、実際の環境よりもこのタスクの実行速度が大幅に低下する可能性があります。このプロセスが完了するまでお待ちください。移行はバックグラウンドで完了するので、ロードショーの他のセクションに進むことができます。これらのマシンについては、後のモジュールで作業を再開します。
 
-数分後、移行が正常に完了したことが確認できます。
+. 数分後、移行が正常に完了したことが確認できます。
 +
 image::2025_spring/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
-選択したVMは現在移行が完了しており、ご都合に合わせてOpenShift Virtualization上で起動できます。
+. 選択したVMは現在移行が完了しており、ご都合に合わせてOpenShift Virtualization上で起動できます。
 
 == まとめ
 
