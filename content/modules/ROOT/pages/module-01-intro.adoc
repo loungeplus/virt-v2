@@ -60,9 +60,9 @@ image::2025_spring/module-01-intro/06_Project_Tree.png[link=self, window=blank, 
 
 . 仮想マシン概要の列には、デフォルトで「すべてのプロジェクト」がリスト表示され、共有クラスター環境内のすべてのユーザーのVMが表示されます。列を並べ替えることでVMの検索が容易になり、また、列の表示をアレンジして整理することも可能です。中央の列で特定のプロジェクトまたは仮想マシンをハイライトすると、この表示が変更されます。
 +
-image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]。
-
-中央の列からプロジェクト *vmimported-{user}* をクリックすると、現在展開され、特定のユーザーアカウントで利用可能な仮想マシンが表示されます。
+image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]
++
+. 中央の列からプロジェクト *vmimported-{user}* をクリックすると、現在展開され、特定のユーザーアカウントで利用可能な仮想マシンが表示されます。
 +
 image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%]
 +
@@ -77,21 +77,20 @@ image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, w
 
 VMを作成する前に、新しいプロジェクトを作成する必要があります。仮想マシンは特定のプロジェクト、またはネームスペースにデプロイされ、デフォルトでは、ネームスペースへのアクセス権限のないユーザーは、仮想マシンにアクセス、管理、制御できません。管理者はすべてのプロジェクトにアクセスでき、すべての仮想マシンを表示できますが、一般ユーザーは必要に応じてプロジェクトへのアクセス権限を付与する必要があります。
 +
-. 中央のツリー表示カラムの右上にある「*プロジェクトの作成*」をクリックします。
+. 中央のツリー表示カラムの右上にある *プロジェクトの作成* をクリックします。
 +
 image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]
 
-. 「*名前*」フィールドに「*vmexamples-{user}*」と入力してプロジェクト名を指定し、「*作成*」をクリックします。
+.  *名前* フィールドに *vmexamples-{user}* と入力してプロジェクト名を指定し、 *作成* をクリックします。
 +
 image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank, width=100%]
 +
 NOTE: この新しいプロジェクトをすぐに表示するために、仮想マシン概要の列が変更されていますが、プロジェクト内にVMが存在しないため、中央の列には表示されません。また、デフォルトでは表示しないオプションがオンになっています。
 
-
 [[create_vm]]
 == Linux 仮想マシンの作成
 
-. 仮想マシン概要の列から、「*Create VirtualMachine*」ボタンをクリックし、ドロップダウンメニューから「*From template*」を選択します。
+. 仮想マシン概要の列から、 *Create VirtualMachine* ボタンをクリックし、ドロップダウンメニューから *From template* を選択します。
 +
 NOTE: VM は、InstanceType ウィザードから作成することも、カスタムの YAML 定義を入力して作成することもできますが、今回のラボのシナリオでは、既存のテンプレートをベースとした VM の作成に限定します。
 +
@@ -109,13 +108,13 @@ image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=
 +
 image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
 
-. 名前を*fedora01*に変更し、*Quick create VirtualMachine*をクリックします。
+. 名前を *fedora01* に変更し、*Quick create VirtualMachine* をクリックします。
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
 . ツリービューに戻り、仮想マシン概要の列に新しいVMの情報が表示されていることを確認します。また、VMが含まれているため、中央の列に *vmexamples-{user}* プロジェクトが表示され、プロジェクト内でハイライトされていることに注目してください。
 +
-. よく見ると、仮想マシン概要の列で、VMステータスが「プロビジョニング中」から「起動中」に変わり、準備が整うと「実行中」に変わっていることが分かります。 
+. よく見ると、仮想マシン概要の列で、VMステータスが *プロビジョニング中* から *起動中* に変わり、準備が整うと *実行中* に変わっていることが分かります。 
 +
 この間、ストレージプロバイダはテンプレートディスクを複製し、新しく作成された仮想マシンで使用できるようにしています。この処理にかかる時間は、ブートディスクの作成に使用するストレージプロバイダや、システムの現在の負荷によって異なります。
 +
