@@ -99,7 +99,7 @@ OpenShift 仮想化についてさらに詳しく知りたい方は、 https://w
 
 === OpenShiftコンソールへの認証情報
 
-OpenShiftクラスタコンソールは、 {openshift_console_url} で利用可能です。
+OpenShiftクラスタコンソールは、 {openshift_console_url}[こちら^] で利用可能です。
 
 ログインは以下で可能です。
 
