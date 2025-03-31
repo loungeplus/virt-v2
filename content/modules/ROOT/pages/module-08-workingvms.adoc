@@ -41,9 +41,9 @@ env: webapp
 +
 IMPORTANT: インデントを正確に取得するようにしてください。以下のスクリーンショットのようにです。
 +
-image::2025_spring/module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%].
+image::2025_spring/module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
-. *winweb02-{user}* VMに対し同じ操作を繰り返します。。
+. *winweb02-{user}* VMに対し同じ操作を繰り返します。
 
 . *winweb01-{user}* と *winweb02-{user}* の両方の仮想マシンを再起動します。
 +
@@ -53,7 +53,7 @@ NOTE: 各仮想マシンのコンソールタブにアクセスして、仮想�
 
 左側のメニューで *Networking* を展開し、*Services* をクリックします。読み込まれた画面で、画面の隅にある *Create Service* ボタンをクリックします。
 +
-image::2025_spring/module-08-workingvms/13_Navigate_Service.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-08-workingvms/13_Navigate_Service.png[link=self, window=blank, width=100%]
 
 . YAMLを以下の定義に置き換えます:
 +
@@ -88,7 +88,7 @@ image::2025_spring/module-08-workingvms/16_Imported_VMs_Pods.png[link=self, wind
 
 === ルートの作成
 
-これで、Windows IIS サーバーは OpenShift クラスター内からアクセスできるようになりました。 他の仮想マシンは、サービス名 + ネームスペース名から決定される DNS 名 **webapp.vmexamples-{user}** を使用して、それらにアクセスできます。 しかし、これらの Web サーバーはアプリケーションのフロントエンドであるため、外部からアクセスできるようにしたいと思います。 これは *Route* を使用してパブリックに公開することで実現できます。
+これで、Windows IIS サーバーは OpenShift クラスター内からアクセスできるようになりました。 他の仮想マシンは、サービス名 + ネームスペース名から決定される DNS 名 **webapp.vmexamples-{user}** を使用して、それらにアクセスできます。しかし、これらの Web サーバーはアプリケーションのフロントエンドであるため、外部からアクセスできるようにしたいと思います。 これは *Route* を使用してパブリックに公開することで実現できます。
 
 .  *Networking* の下で、左側のナビゲーションメニューの *Routes* オプションをクリックします。 画面中央の *Create Route* ボタンをクリックします。
 +
@@ -103,7 +103,7 @@ image::2025_spring/module-08-workingvms/17_Route_Navigation.png[link=self, windo
 .. *TLS termination*: *Edge*
 .. *Insecure traffic*: *Redirect*
 +
-image::2025_spring/module-08-workingvms/18_Create_Route.png[link=self, window=blank, width=100%].
+image::2025_spring/module-08-workingvms/18_Create_Route.png[link=self, window=blank, width=100%]
 
 . *Location* フィールドに表示されているアドレスに移動します
 +

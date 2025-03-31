@@ -2,7 +2,7 @@
 
 == はじめに
 
-このラボでは、https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/[Migration Toolkit for Virtualization^] (MTV) を使用して、VMware vSphere から OpenShift に仮想マシンをインポートします。移行ツールキットでは、インポートの「モード」として次の2つをサポートしています。
+このラボでは、 https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/[Migration Toolkit for Virtualization^] (MTV) を使用して、VMware vSphere から OpenShift に仮想マシンをインポートします。移行ツールキットでは、インポートの「モード」として次の2つをサポートしています。
 
 * コールドマイグレーションは、マイグレーションを開始する前にソースの仮想マシンを停止します。これがデフォルトのマイグレーションタイプです。
 * ウォームマイグレーションでは、ソースの仮想マシンを稼働させたままデータをコピーします。大部分のデータがマイグレーションされると、VM はシャットダウンされ、最終的なデータがデスティネーションにコピーされます。その後、新しい VM が起動され、VM ホスト型アプリケーションのダウンタイムが大幅に短縮されます。
@@ -15,7 +15,7 @@ Operatorのインストールおよび構成方法については、 https://doc
 
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#openstack-prerequisites_mtv[OpenStack^]
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#rhv-prerequisites_mtv[Red Hat Virtualization^]
-* https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#vmware-prerequisites_mtv[VMware vSphere^].
+* https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#vmware-prerequisites_mtv[VMware vSphere^]
 
 .*目標*
 
@@ -86,7 +86,7 @@ image::2025_spring/module-02-mtv/04_vSphere_Datastore.png[link=self, window=blan
 
 VMware vSphereとそこに存在する仮想マシンの確認が完了したので、ウィンドウを閉じてOpenShift Webコンソールに戻ります。
 
-NOTE: *Migration Toolkit for Virtualization (MTV)*は公式にはOpenShift Virtualizationとは別のツールであり、*Virtualization*ペルソナからはアクセスできません。 
+NOTE: *Migration Toolkit for Virtualization (MTV)* は公式にはOpenShift Virtualizationとは別のツールであり、*Virtualization* ペルソナからはアクセスできません。 
 
 . 左側のメニューで *Virtualization* をクリックし、ドロップダウンから *Administrator* を選択します。
 +

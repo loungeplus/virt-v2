@@ -130,7 +130,7 @@ image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank
 +
 image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
-. VMの詳細を確認したら、*Events*タブをクリックして、先ほど行われたプロビジョニングプロセスの詳細を確認します。VMの作成に問題がある場合は、このタブにも表示されます。作成中に発生したイベントは以下の通りです。
+. VMの詳細を確認したら、*Events* タブをクリックして、先ほど行われたプロビジョニングプロセスの詳細を確認します。VMの作成に問題がある場合は、このタブにも表示されます。作成中に発生したイベントは以下の通りです。
 +
 image::2025_spring/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
 +
@@ -151,12 +151,12 @@ image::2025_spring/module-01-intro/19_VM_Configuration.png[link=self, window=bla
 image::2025_spring/module-01-intro/20_Configuration_Tab.png[link=self, window=blank, width=100%]
 +
 * *Details*: このタブでは、VMの物理的特徴がすべて1つのパネルに表示されます。 ここから、CPUやメモリの変更、ホスト名の変更、パススルードライブの追加、ブート順の変更など、さまざまな記述子や基本ハードウェア構成の編集を行うことができます。
-* *Storage*: このタブにはシステムに接続されたディスクがリストされ、新しいディスクをシステムに追加することができます。ゲストがエージェントで構成されている場合、ファイルシステムと使用率がリストされます。ここでは、追加のディスクとして_ConfigMaps_、_Secrets_、および_Service Accounts_をアタッチすることができます。これは、仮想マシンで実行中のアプリケーションに構成データを渡す場合に便利です。
+* *Storage*: このタブにはシステムに接続されたディスクがリストされ、新しいディスクをシステムに追加することができます。ゲストがエージェントで構成されている場合、ファイルシステムと使用率がリストされます。ここでは、追加のディスクとして _ConfigMaps_ 、_Secrets_ 、および _Service Accounts_ をアタッチすることができます。これは、仮想マシンで実行中のアプリケーションに構成データを渡す場合に便利です。
 * *Network*: このタブには、VM用に現在構成されているネットワークインターフェースが表示され、新しいインターフェースを追加することもできます。
 * *Scheduling*: このタブには、VMの実行場所と、退避時の対応戦略を示す高度な構成オプションが含まれています。このタブは、親和性（反）ルール、ノードセレクタと許容範囲の設定、およびVMがどのクラスタノードにスケジュールされるかに影響するその他の動作の設定に使用されます。
 * *SSH*: このタブでは、構成済みのロードバランサー上で SSH サービスを作成するか、機能が有効になっている場合は公開 SSH 鍵を注入することで、マシンへのリモートアクセスを構成できます。
 * *Initial run*: このタブでは、Linux の _cloud-init_ または Microsoft Windows の _sys-prep_ を構成できます。これには、SSH 鍵の注入、アプリケーションのインストール、ネットワーク構成など、最初の起動時に実行するコマンドの設定が含まれます。
-* *Metadata*: このタブには、仮想マシンに現在適用されているラベルと注釈が表示されます。これらの値を変更することで、特定の目的のためにマシンにタグ付けしたり、マシンを一意に識別することで自動ワークフローを有効にすることができます。
+* *Metadata*: このタブには、仮想マシンに現在適用されているラベルとアノテーションが表示されます。これらの値を変更することで、特定の目的のためにマシンにタグ付けしたり、マシンを一意に識別することで自動ワークフローを有効にすることができます。
 
 . これらの各項目をクリックして自由に探索することができますが、入門的な目的では、ストレージとネットワークに特に焦点を当ててみましょう。
 
@@ -194,7 +194,7 @@ image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=bla
 +
 image::2025_spring/module-01-intro/24_VM_Actions_Menu.png[link=self, window=blank, width=100%]
 
-.  *Stop* *ボタンをクリックし、仮想マシンが *Stoped* 状態になるまで待ちます。
+.  *Stop* ボタンをクリックし、仮想マシンが *Stoped* 状態になるまで待ちます。
 +
 image::2025_spring/module-01-intro/25_VM_Stopped.png[link=self, window=blank, width=100%]
 
@@ -215,7 +215,7 @@ image::2025_spring/module-01-intro/27_VM_Actions_Paused.png[link=self, window=bl
 
 このセクションでは、VM をシャットダウンせずに、VM を OpenShift ノードから別のノードにマイグレートします。ライブマイグレーションには、VMディスクをソースノードとデスティネーションノードの両方に同時にマウントできるように、*ReadWriteMany* (RWX) ストレージが必要です。OpenShiftの仮想化は、あなたがよく知っている他の仮想化ソリューションとは異なり、各クラスタメンバーにマウントされたモノリシックなデータストアを使用して、多数のVMディスクを多数の異なるVM用に保持するものではありません。代わりに、各VMディスクは、必要とされる時に、必要とされる場所にのみマウントされる独自のボリュームに保存されます。
 
-. 仮想マシンが稼働している物理ノードを確認するには、「概要」ページの「一般」タイルの下にある *Pod* 名 _virt-launcher-fedora01-uuid_ をクリックします。
+. 仮想マシンが稼働している物理ノードを確認するには、*Overview* ページの *一般* タイルの下にある *Pod* 名 _virt-launcher-fedora01-uuid_ をクリックします。
 +
 image::2025_spring/module-01-intro/28_Pod_Name.png[link=self, window=blank, width=100%]
 

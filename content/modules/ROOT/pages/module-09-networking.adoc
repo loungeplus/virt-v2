@@ -20,15 +20,15 @@ Kubernetes NMState Operator* は、NMState を使用して OpenShift Container P
 
 . 左側のメニューで「*Networking*」をクリックし、次に「*NodeNetworkState*」をクリックして現在の構成を確認します。
 +
-image::2025_spring/module-09-networking/01_NodeNetworkState_List.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/01_NodeNetworkState_List.png[link=self, window=blank, width=100%]
 
 . 前述の通り、ワーカーノードにはこのモジュールで使用するためにすでにLinuxブリッジが構成されていることがわかります。ワーカーの1つを展開し、ブリッジ「br-flat」をクリックして、その詳細情報を表示します。
 +
-image::2025_spring/module-09-networking/02_NodeNetworkState_Info.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/02_NodeNetworkState_Info.png[link=self, window=blank, width=100%]
 
 . 隅にある「X」をクリックしてブリッジの詳細を閉じます。 *br-flat* と名付けられたこのブリッジは、*Kubernetes NMState Operator* を使用して作成されました。 さらに詳しく調べるには、左側のメニューで *NodeNetworkConfigurationPolicy* をクリックします。
 +
-image::2025_spring/module-09-networking/03_NodeNetworkConfigurationPolicy_List.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/03_NodeNetworkConfigurationPolicy_List.png[link=self, window=blank, width=100%]
 
  *br-flat* を選択して情報を取得します。 
 +
@@ -80,7 +80,7 @@ image::2025_spring/module-09-networking/06_NetworkAttachDefinition_Create.png[li
 
 IMPORTANT: ネットワークアタッチメント定義を作成する際には、vmexamples-{user}プロジェクト内であることを確認してください。
 
-*vmexamples-{user}*プロジェクト用のフォームを以下のように入力し、「*ネットワークアタッチメント定義の作成」をクリックします。
+*vmexamples-{user}* プロジェクト用のフォームを以下のように入力し、「*ネットワークアタッチメント定義の作成」をクリックします。
 * *名前*: flatnetwork
 * *ネットワークタイプ*: CNV Linux Bridge
 * *ブリッジ名*: br-flat
@@ -114,7 +114,7 @@ image::2025_spring/module-09-networking/11_VM_Network_Startup.png[]
 +
 . *enp2s0* インターフェースは、フラットネットワーク（*192.168.64.0/18*）からIPアドレスを取得します。そのネットワークには、そのネットワークにIPを割り当てるDHCPサーバーがあります。 
 +
-image::2025_spring/module-09-networking/12_VM_Network_Console.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/12_VM_Network_Console.png[link=self, window=blank, width=100%]
 
 . fedora02 VMを同じ *フラットネットワーク* ネットワークにアタッチするために、同じ手順を繰り返します。
 
@@ -168,19 +168,19 @@ UDNにアクセスできるポッドを作成する前に、ネームスペー�
 
 この作業はクラスタ管理者によって実行する必要があります。*vmexamples-{user}-udn* という名前空間を適切なラベル（*k8s.ovn.org/primary-user-defined-network*）とともに割り当てました
 
-. 「ネットワーク」に移動し、「ユーザー定義ネットワーク」をクリックして、プロジェクト「vmexamples-{user}-udn*
+. *ネットワーク* に移動し、*ユーザー定義ネットワーク* をクリックして、プロジェクト *vmexamples-{user}-udn*
 +
 image::2025_spring/module-09-networking/14_UDN_List.png[link=self, window=blank, width=100%]」が選択されていることを確認
 
-. 「Create」をクリックし、「UserDefinedNetwork」を選択します。
+. *Create* をクリックし、 *UserDefinedNetwork* を選択します。
 +
-image::2025_spring/module-09-networking/15_UDN_Create.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/15_UDN_Create.png[link=self, window=blank, width=100%]
 
-. サブネット「*192.168.254.0/24」を指定し、「Create」をクリックします。
+. サブネット *192.168.254.0/24* を指定し、 *Create* をクリックします。
 +
-image::2025_spring/module-09-networking/16_UDN_Form.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/16_UDN_Form.png[link=self, window=blank, width=100%]
 
-. 作成したUDNの設定を確認します
+. 作成したUDNの設定を確認します。
 +
 image::2025_spring/module-09-networking/17_UDN_Created.png[link=self, window=blank, width=100%]
 +
@@ -189,11 +189,11 @@ image::2025_spring/module-09-networking/17_UDN_Created.png[link=self, window=bla
 * 役割はプライマリです（仮想マシンは現時点ではプライマリネットワークのみを使用できます）。
 * ネットワークアタッチメント定義は自動的に作成されます。
 
-. 次に、左側のメニューで*NetworkAttachmentDefinitions*に移動し、関連するNADが自動的に作成されていることを確認します。
+. 次に、左側のメニューで *NetworkAttachmentDefinitions* に移動し、関連するNADが自動的に作成されていることを確認します。
 +
 image::2025_spring/module-09-networking/18_UDN_NAD.png[link=self, window=blank, width=100%]
 
-. UserDefinedNetworkに接続された仮想マシンを作成するには、https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-primary-udn[YAML定義の調整^]が必要です。このラボでは作業を簡単にするため、以下のYAML定義を使用してUserDefinedNetworkに接続されたVM全体を定義するだけです。
+. UserDefinedNetworkに接続された仮想マシンを作成するには、 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-primary-udn[YAML定義の調整^] が必要です。このラボでは作業を簡単にするため、以下のYAML定義を使用してUserDefinedNetworkに接続されたVM全体を定義するだけです。
 
 . 次の画像のように、トップメニューを使用してYAMLをインポートできます。
 +
@@ -270,7 +270,7 @@ image::2025_spring/module-09-networking/20_Create_VM_YAML.png[link=self, window=
 
 . *VirtualMachines* に切り替えて、VM が作成されるのを見ます。 作成されたら、新たに作成された *fedora-udn* 仮想マシンを確認します。 *Overview* タブの *Network* タイルに、UserDefinedNetwork から割り当てられた IP が表示されます。
 +
-image::2025_spring/module-09-networking/21_UDN_Network_Tile.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-09-networking/21_UDN_Network_Tile.png[link=self, window=blank, width=100%]
 
 . コンソールタブに切り替えて、提供されたゲスト認証情報を使用してVMにログインします。 
 +
