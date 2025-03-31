@@ -33,9 +33,10 @@ image::2025_spring/module-09-networking/03_NodeNetworkConfigurationPolicy_List.p
  *br-flat* を選択して情報を取得します。 
 +
 image::2025_spring/module-09-networking/04_NodeNetworkConfigurationPolicy_Info.png[link=self, window=blank, width=100%]
++
 
 NOTE: *NodeNetworkConfigurationPolicy* はノードレベルで構成を実行するため、現在のユーザーアカウントでこれらのオプションを変更することはできません。そのため、管理者に問い合わせるよう求められます。
-+
+
 . このブリッジがどのように作成されたかを確認するには、*YAML* に切り替えて定義を確認します。管理者として、以下の yaml スニペットを使用して同様のブリッジを作成できます。
 +
 image::2025_spring/module-09-networking/05_NodeNetworkConfigurationPolicy_YAML.png[link=self, window=blank, width=100%]
@@ -91,6 +92,7 @@ image::2025_spring/module-09-networking/07_NetworkAttachDefinition_Create_Form.p
 +
 
 NOTE: 上記のフォームには、VLAN タグ番号を入力するフィールドがあります。これは、VLAN タグの割り当てが必要なネットワークに接続する場合に使用します。このラボでは、タグなしネットワークを使用しているため、VLAN 番号は必要ありません。
++
 
 NOTE: ホスト上の単一のLinuxブリッジには、多くの異なるVLANを関連付けることができます。このシナリオでは、個々のNetwork Attachment Definitionを作成するだけでよく、個別のホストインターフェースやブリッジを作成する必要はありません。
 +
