@@ -24,7 +24,7 @@ image::2025_spring/module-04-storage/00_Disk_Concepts.png[link=self, window=blan
 
 . 左側のメニューで *Storage* -> *Persistent Volume Claims* をクリックして開始します。 *vmexamples-{user}* ネームスペースにいることを確認してください。前のセクションで *fedora01* 仮想マシンを作成したときに作成された *fedora01* PVCが表示されるはずです。
 +
-image::2025_spring/module-04-storage/01_PVC_List.png[link=self, window=blank, width=100%].
+image::2025_spring/module-04-storage/01_PVC_List.png[link=self, window=blank, width=100%]
 
 . *fedora01* PVCをクリックすると、VMをバックアップするストレージボリュームに関する追加の詳細情報が表示されます。
 +
@@ -61,11 +61,11 @@ image::2025_spring/module-04-storage/03_VM_Overview.png[link=self, window=blank,
 
 . 現在、このVMのスナップショットは概要ページに表示されていないことに注意してください。
 +
-image::2025_spring/module-04-storage/04_Snapshots_Overview.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-04-storage/04_Snapshots_Overview.png[link=self, window=blank, width=100%]
 
 . ページ上部の *Snapshots* タブに移動します。
 +
-image::2025_spring/module-04-storage/05_Snapshot_Menu.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-04-storage/05_Snapshot_Menu.png[link=self, window=blank, width=100%]
 
 . *スナップショットの取得* をクリックすると、ダイアログが開きます。
 +
@@ -73,7 +73,7 @@ image::2025_spring/module-04-storage/06_VM_Snapshot_Dialog.png[link=self, window
 +
 NOTE: *cloudinitdisk* がスナップショットに含まれないという警告が表示されます。これは初期ブートに使用される一時的なディスクであるため、想定される動作です。
 
-. スナップショットには自動的に名前が生成されます。 *保存* をクリックし、ステータスが *操作完了* と表示されるまで待ちます。
+. スナップショットには自動的に名前が生成されます。 *Save* をクリックし、ステータスが *Operation complete* と表示されるまで待ちます。
 +
 image::2025_spring/module-04-storage/07_VM_Snapshot_Taken.png[link=self, window=blank, width=100%]
 
@@ -81,11 +81,11 @@ image::2025_spring/module-04-storage/07_VM_Snapshot_Taken.png[link=self, window=
 +
 image::2025_spring/module-04-storage/08_VM_Restore_Disabled.png[link=self, window=blank, width=100%]
 
-. 次に、*コンソール* タブに切り替えます。ログインして、VMが起動できないように変更を加えます。
+. 次に、*Console* タブに切り替えます。ログインして、VMが起動できないように変更を加えます。
 +
 image::2025_spring/module-04-storage/09_Console_Login.png[link=self, window=blank, width=100%]
 +
-NOTE: *ユーザー名* と *パスワード* の両方の隣にコピーアイコンがあり、*コンソールに貼り付け* ボタンも利用可能です。
+NOTE: *User name* と *Password* の両方の隣にコピーアイコンがあり、*Paste to console* (コンソールに貼り付け)ボタンも利用可能です。
 
 . ログイン後、次のコマンドを実行します。
 +
@@ -102,11 +102,11 @@ IMPORTANT: 前のステップでは、ゲスト内でオペレーティングシ
 
 . 右上の *Actions* ドロップダウンメニューまたはショートカットボタンを使用して、VMを *Stop* します。 このプロセスは、マシンが不安定な状態にあるため、正常なシャットダウンを試みるため、時間がかかる場合があります。*Actions* ドロップダウンメニューを再度クリックすると、*Force stop* オプションが表示されます。 ラボを継続するには、このオプションを使用してください。
 
-. *概要* タブをクリックして、VM が停止したことを確認できます。 また、先ほど取得したスナップショットが *スナップショット* タイルに表示されていることも確認できます。 
+. *Overview* タブをクリックして、VM が停止したことを確認できます。 また、先ほど取得したスナップショットが *Snapshot* タイルに表示されていることも確認できます。 
 +
 image::2025_spring/module-04-storage/11_VM_Stopped_Snapshot.png[link=self, window=blank, width=100%]
 
-. *スナップショット* タイルで、当社のスナップショットの横にある3つのドットのメニューをクリックします。VMが停止している状態で、*リストア* がグレー表示ではなくなります。クリックします。
+. *Snapshot* タイルで、当社のスナップショットの横にある3つのドットのメニューをクリックします。VMが停止している状態で、*Restore* がグレー表示ではなくなります。クリックします。
 +
 image::2025_spring/module-04-storage/12_VM_Restore.png[link=self, window=blank, width=100%]
 
@@ -116,7 +116,7 @@ image::2025_spring/module-04-storage/13_VM_Restore_Dialog.png[link=self, window=
 
 . VM が復元されるまで待ちます。このプロセスはかなり速く完了します。 上部にある *Snapshots* タブをクリックすると、直近の復元操作の詳細を確認できます。
 +
-image::2025_spring/module-04-storage/14_VM_Restored.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-04-storage/14_VM_Restored.png[link=self, window=blank, width=100%]
 
 . *Overview* タブに戻り、VM を起動します。
 +
@@ -133,11 +133,11 @@ image::2025_spring/module-04-storage/16_VM_Running.png[link=self, window=blank, 
 
 . *Overview* 画面に戻り、*Actions* ドロップダウンメニューをクリックしてVMをクローニングするオプションを表示します。
 +
-image::2025_spring/module-04-storage/17_Overview_Actions_Clone.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-04-storage/17_Overview_Actions_Clone.png[link=self, window=blank, width=100%]
 
 . *Actions* メニューから *Clone* をクリックすると、ダイアログが開きます。 複製したVMに *fedora02* という名前を付け、*Start VirtualMachine on clone* のチェックボックスがチェックされていないことを確認してから、*Clone* をクリックします。
 +
-image::2025_spring/module-04-storage/18_VM_Clone_Dialog.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-04-storage/18_VM_Clone_Dialog.png[link=self, window=blank, width=100%]
 
 . 新しいVMが作成され、ディスクが複製され、ポータルが自動的に新しいVMにリダイレクトされます。 *Created* の時間がごく最近であることがわかります。
 +

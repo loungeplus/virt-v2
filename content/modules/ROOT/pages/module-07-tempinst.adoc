@@ -50,11 +50,11 @@ image::2025_spring/module-07-tempinst/03_Create_Custom_Template.png[link=self, w
 * *Template display name:* CentOS Stream 9 VM - Database Template Small
 * *Template provider:* Roadshow {user}
 +
-image::2025_spring/module-07-tempinst/04_Clone_Template_Options.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-07-tempinst/04_Clone_Template_Options.png[link=self, window=blank, width=100%\]
 
 . これにより、テンプレートの *Details* ページに移動し、いくつかのオプションをカスタマイズできるようになります。まず、ページの下部付近にあるCPUとメモリを見つけ、鉛筆アイコンをクリックして編集します。
 +
-image::2025_spring/module-07-tempinst/05_Clone_Details.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-07-tempinst/05_Clone_Details.png[link=self, window=blank, width=100%\]
 
 . 新しいウィンドウが開き、CPUとメモリの量を編集できます。カスタムテンプレートでは、CPUの値を2、メモリの値を4 GiBに設定し、*Save* ボタンをクリックします。
 +
@@ -359,15 +359,15 @@ image::2025_spring/module-07-tempinst/32_Windows_Template_Running.png[link=self,
 [[instance_types]]
 == インスタンスタイプの紹介
 
-仮想マシンのデプロイプロセスを簡素化するために、OpenShift 4.14 からデフォルトの構成メカニズムが変更され、*インスタンスタイプ*の使用が強調されるようになりました。インスタンスタイプは、新しいVMに適用するリソースと特性を定義できる再利用可能なオブジェクトです。独自のVMをプロビジョニングする際に、OpenShift Virtualizationをインストールすると、カスタムインスタンスタイプを定義したり、さまざまなインスタンスタイプを使用したりできます。これは、一般的なクラウドプロバイダーのセルフサービスカタログを使用する際にユーザーが経験することに非常に似ています。
+仮想マシンのデプロイプロセスを簡素化するために、OpenShift 4.14 からデフォルトの構成メカニズムが変更され、*インスタンスタイプ* の使用が強調されるようになりました。インスタンスタイプは、新しいVMに適用するリソースと特性を定義できる再利用可能なオブジェクトです。独自のVMをプロビジョニングする際に、OpenShift Virtualizationをインストールすると、カスタムインスタンスタイプを定義したり、さまざまなインスタンスタイプを使用したりできます。これは、一般的なクラウドプロバイダーのセルフサービスカタログを使用する際にユーザーが経験することに非常に似ています。
 
 . このセクションでは、インスタンスタイプを使用してVMをプロビジョニングする方法を説明します。
 
-. まず、左側のメニューで「カタログ」をクリックします。 デフォルトのカタログ項目として「インスタンスタイプ」が表示されます。
+. まず、左側のメニューで *Catalog* をクリックします。 デフォルトのカタログ項目として *Instance Types* が表示されます。
 +
 image::2025_spring/module-07-tempinst/33_Left_Menu_Catalog.png[link=self, window=blank, width=100%]
 
-. インスタンスタイプを使用する最初のステップは、起動するボリュームを選択することです。起動ソースを提供するテンプレートと同様に、これらの起動ソースは、InstanceTypeでプロビジョニングされたゲストで使用できます。openshift-virtualization-os-images*プロジェクトを選択すると、含まれるボリュームを確認できます。または、*Add volume* ボタンを使用して独自のボリュームをアップロードすることもできます。
+. インスタンスタイプを使用する最初のステップは、起動するボリュームを選択することです。起動ソースを提供するテンプレートと同様に、これらの起動ソースは、InstanceTypeでプロビジョニングされたゲストで使用できます。*openshift-virtualization-os-images* プロジェクトを選択すると、含まれるボリュームを確認できます。または、*Add volume* ボタンを使用して独自のボリュームをアップロードすることもできます。
 +
 image::2025_spring/module-07-tempinst/34_Volume_Boot.png[link=self, window=blank, width=100%]
 
@@ -390,7 +390,7 @@ image::2025_spring/module-07-tempinst/36_Select_InstanceType.png[link=self, wind
 +
 image::2025_spring/module-07-tempinst/37_InstanceType_Resources.png[link=self, window=blank, width=100%]
 
-. インスタンスタイプを使用してプロビジョニングを行う際に最後に完了させる必要があるセクションは、テンプレートセクションと類似しています。仮想マシンに名前を付け、バックアップディスクに使用するストレージクラスを選択する必要があります。デフォルトでは、VMに名前が生成され、デフォルトのストレージクラスが選択されます。問題がなければ、[*Create VirtualMachine*] ボタンをクリックします。
+. インスタンスタイプを使用してプロビジョニングを行う際に最後に完了させる必要があるセクションは、テンプレートセクションと類似しています。仮想マシンに名前を付け、バックアップディスクに使用するストレージクラスを選択する必要があります。デフォルトでは、VMに名前が生成され、デフォルトのストレージクラスが選択されます。問題がなければ、*Create VirtualMachine* ボタンをクリックします。
 +
 image::2025_spring/module-07-tempinst/38_VM_Details.png[link=self, window=blank, width=100%]
 
@@ -399,13 +399,13 @@ image::2025_spring/module-07-tempinst/38_VM_Details.png[link=self, window=blank,
 image::2025_spring/module-07-tempinst/39_VM_Overview.png[link=self, window=blank, width=100%]
 
 [[cleanup]]
-== Cleanup
+== クリーンアップ
 
 次のラボでリソースを節約するには、このモジュールで作成したVMをすべて停止してください。
 
 . 左側のメニューで *Virtualization* パースペクティブに移動し、*Virtualmachines* をクリックします。
 . VMワークロードをホストしている、アクセス可能な各プロジェクトが、中央列のツリービューに表示されます。（最低限、プロジェクト *vmimported-{user}* および *vmexamples-{user}* を展開して、仮想マシンのステータスを確認してください。
-. VMのステータスが *Running *となっているものがあれば、中央のツリー列でVMをハイライト表示し、 *Actions* ドロップダウンメニューから *Stop* ボタンまたはオプションを選択します。
+. VMのステータスが *Running* となっているものがあれば、中央のツリー列でVMをハイライト表示し、 *Actions* ドロップダウンメニューから *Stop* ボタンまたはオプションを選択します。
 
 これで、すべてのVMが *Stopped* 状態になっているはずです。
 

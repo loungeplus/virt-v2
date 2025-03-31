@@ -110,15 +110,15 @@ NOTE: MTV 2.4 以降はプロジェクト/ネームスペースを認識し、�
 
 . 左側のメニューで *Migration* -> *Plans for virtualization* に移動し、*Create Plan* をクリックします。
 +
-image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
 . 移行元のソースプロバイダを選択するよう求められます。*VMware* のタイルをクリックします。
 +
-image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window=blank, width=100%]
 
 . 環境内の多数の仮想マシンが表示されます。用意されている検索バーを使用して、選択したい仮想マシンを検索するには、ユーザーアカウント：*{user}* を検索します。
 +
-image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%] 
+image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%]
 
 . 次のページで、移動したい3つのVMを選択します:
 
@@ -134,11 +134,11 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 +
 マイグレーションプランに以下の値を入力してください: 
 
-* *計画名*: move-webapp-vmware
-* *ターゲットプロバイダ*: host
-* *ターゲットのネームスペース*: vmexamples-{user}
-* *ネットワークマップ*: Pod Networking
-* *ストレージマップ*: ocs-external-storagecluster-ceph-rbd
+* *Plan name*: move-webapp-vmware
+* *Target provider*: host
+* *Target namespace*: vmexamples-{user}
+* *Network map*: Pod Networking
+* *Storage map*: ocs-external-storagecluster-ceph-rbd
 +
 NOTE: ネットワークマップとストレージマップの両方が、ソースプロバイダー上で現在検出された仮想マシンが使用しているネットワークとデータストアを自動的に検出します。OpenShift側でそれぞれの値が正しく設定されていることを確認するだけで済みます。
 
@@ -156,7 +156,7 @@ image::2025_spring/module-02-mtv/13_Migration_Plan_Ready.png[link=self, window=b
 
 . 移行を開始する確認ボックスが表示されますので、*Start* ボタンをクリックします。
 +
-image::2025_spring/module-02-mtv/14_Confirm_Migrate_Start.png[link=self, window=blank, width=100%]。
+image::2025_spring/module-02-mtv/14_Confirm_Migrate_Start.png[link=self, window=blank, width=100%]
 
 . 画面中央にプログレスバーが表示され、*0 of 3 VMs migrated* というステータスが表示されます。
 +
@@ -183,7 +183,7 @@ image::2025_spring/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=
 
 このセクションでは、仮想化用マイグレーションツールキットについて説明し、VMware vSphere 環境から OpenShift Virtualization への既存の仮想マシンのマイグレーションを支援するために使用しました。 仮想化用マイグレーションツールキットに加えて、現在利用可能なマイグレーションツールキットは 2 つあります。 これらの組み合わせにより、組織のニーズに応じて、さまざまなタイプのワークロードを OpenShift クラスタ内およびクラスタ間で移動することができます。
 
-* https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/html/introduction_to_the_migration_toolkit_for_applications/index[アプリケーション用移行ツールキット] - 大規模なアプリケーションのコンテナおよび Kubernetes への移行を迅速化します。
-* https://https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/migration_toolkit_for_containers/about-mtc[コンテナ用移行ツールキット] - OpenShift クラスタ間でステートフルなアプリケーションワークロードを移行します。
+* https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/html/introduction_to_the_migration_toolkit_for_applications/index[Migration Toolkit for Applications] - 大規模なアプリケーションのコンテナおよび Kubernetes への移行を迅速化します。
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/migration_toolkit_for_containers/about-mtc[Migration Toolkit for Containers] - OpenShift クラスタ間でステートフルなアプリケーションワークロードを移行します。
 
 これらのその他の移行ツールキットの詳細については、Red Hat アカウントチームまでお問い合わせください。
