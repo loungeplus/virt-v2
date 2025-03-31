@@ -1,8 +1,19 @@
-以下のVirtualization Roadshowコンテンツの日本語訳リポジトリです。
+Welcome to the OpenShift Virtualization Roadshow!
+
+== このリポジトリについて
+OpenShift Virtualization Roadshowコンテンツの日本語訳リポジトリです。
+
+英語版オリジナルのリポジトリは下記です。
 
 https://github.com/rhpds/openshift-virt-roadshow-cnv-multi-user/tree/network
 
-Welcome to the OpenShift Virtualization Roadshow!
+== 日本語化の方法
+環境のBastion端末にSSHログイン後、端末で以下のコマンドを実行ください。
+
+[source,bash,role=execute,subs="attributes"]
+----
+curl -sSL https://raw.githubusercontent.com/RH-OPEN/openshift-virt-roadshow-cnv-multi-user-jp-2025/refs/heads/main/translation.sh | bash
+----
 
 == Introduction
 This repository hosts the lab guide for the OpenShift Virtualization Roadshow, which can be delivered by Red Hat Associates to customers and interested parties all over the world.
