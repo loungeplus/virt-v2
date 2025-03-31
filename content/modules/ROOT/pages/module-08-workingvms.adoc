@@ -51,7 +51,7 @@ NOTE: 各仮想マシンのコンソールタブにアクセスして、仮想�
 
 === Serviceの作成
 
-左側のメニューで *Networking* を展開し、*Services* をクリックします。読み込まれた画面で、画面の隅にある *Create Service* ボタンをクリックします。
+. 左側のメニューで *Networking* を展開し、*Services* をクリックします。読み込まれた画面で、画面の隅にある *Create Service* ボタンをクリックします。
 +
 image::2025_spring/module-08-workingvms/13_Navigate_Service.png[link=self, window=blank, width=100%]
 

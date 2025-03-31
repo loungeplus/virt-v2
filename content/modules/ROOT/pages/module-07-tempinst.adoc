@@ -132,7 +132,7 @@ NOTE: ブートソースが提供されていないため、このVMを素早く
 +
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
-. このダイアログでは、
+. ダイアログで以下を入力します：
 * *win-sysprep* という名前を指定します。
 * *Boot from CD* のチェックボックスをオンにします。
 * ドロップダウンメニューから *(creates PVC)* URLを選択します。

@@ -103,7 +103,7 @@ image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blan
 [[restore_backup]]
 == バックアップからの復元
 
-左側のメニューで、*Virtualization* をクリックし、次に *VirtualMachines* をクリックします。中央のツリー列で *vmexamples-{user}* プロジェクトを展開し、*fedora02* VMをクリックします。
+. 左側のメニューで、*Virtualization* をクリックし、次に *VirtualMachines* をクリックします。中央のツリー列で *vmexamples-{user}* プロジェクトを展開し、*fedora02* VMをクリックします。
 +
 image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=blank, width=100%]
 
@@ -111,7 +111,7 @@ image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=bla
 +
 image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]
 
-プロンプトが表示されたら、仮想マシンの削除を確認する赤い *Delete* ボタンをクリックします。
+. プロンプトが表示されたら、仮想マシンの削除を確認する赤い *Delete* ボタンをクリックします。
 +
 image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank, width=100%]
 

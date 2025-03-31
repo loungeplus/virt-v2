@@ -30,7 +30,7 @@ image::2025_spring/module-09-networking/02_NodeNetworkState_Info.png[link=self, 
 +
 image::2025_spring/module-09-networking/03_NodeNetworkConfigurationPolicy_List.png[link=self, window=blank, width=100%]
 
- *br-flat* を選択して情報を取得します。 
+. *br-flat* を選択して情報を取得します。 
 +
 image::2025_spring/module-09-networking/04_NodeNetworkConfigurationPolicy_Info.png[link=self, window=blank, width=100%]
 +
