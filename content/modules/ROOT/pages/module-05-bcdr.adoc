@@ -61,7 +61,7 @@ image::2025_spring/module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, wid
 
 . _YAMLビュー_ に切り替え、デフォルトのコンテンツを以下のものに置き換えます。
 +
-[source,yaml,role=execute,subs=「attributes」]
+[source,yaml,role=execute,subs="attributes"]
 ----
 ---
 apiVersion: velero.io/v1
@@ -127,7 +127,7 @@ image::2025_spring/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, wi
 
 . YAML ビューに切り替え、コンテンツを以下のものに置き換えます:
 +
-[source,yaml,role=execute,subs=「attributes」]
+[source,yaml,role=execute,subs="attributes"]
 ----
 ---
 apiVersion: velero.io/v1

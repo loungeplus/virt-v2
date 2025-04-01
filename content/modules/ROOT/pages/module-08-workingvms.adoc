@@ -57,7 +57,7 @@ image::2025_spring/module-08-workingvms/13_Navigate_Service.png[link=self, windo
 
 . YAMLを以下の定義に置き換えます:
 +
-[source,yaml,role=execute,subs=「attributes」]
+[source,yaml,role=execute,subs="attributes"]
 ----
 apiVersion: v1
 kind: Service
@@ -117,7 +117,7 @@ NOTE: 接続性の問題に対処するため、データベース VM にService
 
 . 再度、*Networking* -> *Services* に移動し、*Create Service* をクリックします。 YAML を以下の定義に置き換えます:
 +
-[source,yaml,role=execute,subs=「attributes」]
+[source,yaml,role=execute,subs="attributes"]
 ----
 apiVersion: v1
 kind: Service
