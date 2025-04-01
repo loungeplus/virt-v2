@@ -23,7 +23,7 @@ OpenShift クラスタコンソールは {openshift_console_url} で利用可能
 [[virt_persona]]
 == Virtualization パースペクティブへの切り替え
 
-. 最初にログインすると、*Developer* パースペクティブが表示され、紹介プロンプトが表示されます。 *Skip tour* ボタンをクリックしてウィンドウを閉じます。
+. 最初にログインすると、*Developer* (開発者)パースペクティブが表示され、紹介プロンプトが表示されます。 *Skip tour* ボタンをクリックしてウィンドウを閉じます。
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
@@ -153,7 +153,7 @@ image::2025_spring/module-01-intro/20_Configuration_Tab.png[link=self, window=bl
 * *Details*: このタブでは、VMの物理的特徴がすべて1つのパネルに表示されます。 ここから、CPUやメモリの変更、ホスト名の変更、パススルードライブの追加、ブート順の変更など、さまざまな記述子や基本ハードウェア構成の編集を行うことができます。
 * *Storage*: このタブにはシステムに接続されたディスクがリストされ、新しいディスクをシステムに追加することができます。ゲストがエージェントで構成されている場合、ファイルシステムと使用率がリストされます。ここでは、追加のディスクとして _ConfigMaps_ 、_Secrets_ 、および _Service Accounts_ をアタッチすることができます。これは、仮想マシンで実行中のアプリケーションに構成データを渡す場合に便利です。
 * *Network*: このタブには、VM用に現在構成されているネットワークインターフェースが表示され、新しいインターフェースを追加することもできます。
-* *Scheduling*: このタブには、VMの実行場所と、退避時の対応戦略を示す高度な構成オプションが含まれています。このタブは、親和性（反）ルール、ノードセレクタと許容範囲の設定、およびVMがどのクラスタノードにスケジュールされるかに影響するその他の動作の設定に使用されます。
+* *Scheduling*: このタブには、VMの実行場所と、退避時の対応戦略（Eviction strategy）を示す高度な構成オプションが含まれています。このタブは、アフィニティルール/アンチアフィニティルール、ノードセレクタと許容範囲の設定、およびVMがどのクラスタノードにスケジュールされるかに影響するその他の動作の設定に使用されます。
 * *SSH*: このタブでは、構成済みのロードバランサー上で SSH サービスを作成するか、機能が有効になっている場合は公開 SSH 鍵を注入することで、マシンへのリモートアクセスを構成できます。
 * *Initial run*: このタブでは、Linux の _cloud-init_ または Microsoft Windows の _sys-prep_ を構成できます。これには、SSH 鍵の注入、アプリケーションのインストール、ネットワーク構成など、最初の起動時に実行するコマンドの設定が含まれます。
 * *Metadata*: このタブには、仮想マシンに現在適用されているラベルとアノテーションが表示されます。これらの値を変更することで、特定の目的のためにマシンにタグ付けしたり、マシンを一意に識別することで自動ワークフローを有効にすることができます。
@@ -233,7 +233,7 @@ image::2025_spring/module-01-intro/30_VM_Dialog_Migrate.png[link=self, window=bl
 +
 image::2025_spring/module-01-intro/31_VM_Migrating.png[link=self, window=blank, width=100%]
 
-. 移行が完了すると、VMは「実行中」ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_ のポッド名をクリックしてみましょう。
+. 移行が完了すると、VMは *Running* ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_ のポッド名をクリックしてみましょう。
 +
 image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blank, width=100%]
 

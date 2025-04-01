@@ -26,7 +26,7 @@ NOTE:  これは、サポート対象のバックアップおよびリカバリ�
 [[review_operator]]
 == OADP オペレータを確認
 
-. もう一度管理者パースペクティブに移動し、左側のメニューで *Operators*、*Installed Operators* の順にクリックします。 プロジェクト *oadp-{user}* が選択されていることを確認します。 *OADP* と入力します 
+. Administrator パースペクティブに移動し、左側のメニューで *Operators*、*Installed Operators* の順にクリックします。 プロジェクト *oadp-{user}* が選択されていることを確認します。 *OADP* と入力します 
 +
 image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
 

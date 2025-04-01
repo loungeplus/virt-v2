@@ -198,13 +198,13 @@ image::2025_spring/module-09-networking/17_UDN_Created.png[link=self, window=bla
 +
 image::2025_spring/module-09-networking/18_UDN_NAD.png[link=self, window=blank, width=100%]
 
-. UserDefinedNetworkに接続された仮想マシンを作成するには、 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-primary-udn[YAML定義の調整^] が必要です。このラボでは作業を簡単にするため、以下のYAML定義を使用してUserDefinedNetworkに接続されたVM全体を定義するだけです。
+. UserDefinedNetworkに接続された仮想マシンを作成するには、 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-primary-udn[YAML定義の調整^] が必要です。このラボでは作業を簡単にするため、以下のYAML定義を使用し、UserDefinedNetworkに接続されたVMを作成します。
 
 . 次の画像のように、トップメニューを使用してYAMLをインポートできます。
 +
 image::2025_spring/module-09-networking/19_UDN_Import_YAML.png[link=self, window=blank, width=100%]
 +
-[source,yaml,role=execute,subs=「attributes」]
+[source,yaml,role=execute,subs="attributes"]
 ----
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
