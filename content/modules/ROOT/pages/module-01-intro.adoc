@@ -123,9 +123,9 @@ image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank
 . 仮想マシンが起動したら、右側の列にある *Overview* ページでさらに詳しく調べることができます: 
 +
 * *Details*：このタイルには、VM の名前、ステータス、作成時間、OS、仮想リソース、および作成元のテンプレートなど、VM に関する情報が表示されます。また、VNC 端末の縮小版と、フルスクリーン Web コンソールを起動する機能も含まれています。
-* *General*：このタイルには、ゲストが実行されている Namespace (プロジェクト)、インスタンス名、および Kubernetes ポッドなど、OpenShift 固有の情報が表示されます。
+* *General*：このタイルには、ゲストが実行されている Namespace (プロジェクト)、インスタンス名、および Kubernetes Podなど、OpenShift 固有の情報が表示されます。
 * *Snapshots*: このタイルでは、既存のスナップショットに関する情報を表示し、スナップショットをすばやく作成するためのボタンも表示されます。
-* *Network*: このタイルでは、ソフトウェア定義ネットワーク（SDN）上の仮想マシンのIPアドレスと内部ホスト名が表示されます。高度なネットワークが定義されていない場合、VMは自動的にポッドネットワークに接続されます。このラボの後半では、高度なネットワークオプションと、VMの接続性をカスタマイズする方法について説明します。
+* *Network*: このタイルでは、ソフトウェア定義ネットワーク（SDN）上の仮想マシンのIPアドレスと内部ホスト名が表示されます。高度なネットワークが定義されていない場合、VMは自動的にPodネットワークに接続されます。このラボの後半では、高度なネットワークオプションと、VMの接続性をカスタマイズする方法について説明します。
 * *Utilization*: このタイルでは、CPU、メモリ、ストレージ、ネットワークスループットなど、現在この仮想マシンで使用中のリソースの概要が表示されます。
 +
 image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
@@ -160,7 +160,7 @@ image::2025_spring/module-01-intro/20_Configuration_Tab.png[link=self, window=bl
 
 . これらの各項目をクリックして自由に探索することができますが、入門的な目的では、ストレージとネットワークに特に焦点を当ててみましょう。
 
-. *Storage* タブをクリックして、VMに関連付けられているディスクの一覧を表示します。
+. *Storage* サブタブをクリックして、VMに関連付けられているディスクの一覧を表示します。
 +
 image::2025_spring/module-01-intro/21_Storage_Tab.png[link=self, window=blank, width=100%]
 +
@@ -233,11 +233,11 @@ image::2025_spring/module-01-intro/30_VM_Dialog_Migrate.png[link=self, window=bl
 +
 image::2025_spring/module-01-intro/31_VM_Migrating.png[link=self, window=blank, width=100%]
 
-. 移行が完了すると、VMは *Running* ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_ のポッド名をクリックしてみましょう。
+. 移行が完了すると、VMは *Running* ステータスに戻りますが、新しいノード上で稼働します。確認するために、_virt-launcher-fedora01-uuid_ のPod名をクリックしてみましょう。
 +
 image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blank, width=100%]
 
-. 仮想マシンが新しいノード（_worker-cluster-ttgmt-2_）上で稼働していること、および、ライブマイグレーションプロセスによりVMインスタンスが新しいワーカーノード上の新しいポッドに中断なく転送されたため、ポッド自体が新しいポッドに新しい一意のIDで存在していることが確認できます。
+. 仮想マシンが新しいノード（_worker-cluster-ttgmt-2_）上で稼働していること、および、ライブマイグレーションプロセスによりVMインスタンスが新しいワーカーノード上の新しいPodに中断なく転送されたため、Pod自体が新しいPodに新しい一意のIDで存在していることが確認できます。
 +
 image::2025_spring/module-01-intro/33_Pod_Details_Node_Migrated.png[link=self, window=blank, width=100%]
 

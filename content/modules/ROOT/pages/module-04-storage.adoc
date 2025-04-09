@@ -8,7 +8,7 @@ Red Hat OpenShift は、オンプレミスおよびクラウドプロバイダ�
 
 NOTE: このリストは完全なものではありません。サポート対象のストレージソリューションのすべての情報については、 https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] を参照してください。
 
-このワークショップでは、プロバイダーにストレージを要求し、VMディスクを保存するために使用されるPVC（Persistent Volume Claim）について説明します。多くのストレージプロバイダーは、デバイスのスナップショットやクローンもサポートしています。CSIドライバーとストレージデバイスがサポートする機能については、必ずベンダーに確認してください。
+このラボでは、プロバイダーにストレージを要求し、VMディスクを保存するために使用されるPVC（Persistent Volume Claim）について説明します。多くのストレージプロバイダーは、デバイスのスナップショットやクローンもサポートしています。CSIドライバーとストレージデバイスがサポートする機能については、必ずベンダーに確認してください。
 
 特に、OpenShift Virtualization固有のストレージプロトコル（NFS、iSCSI、FCなど）に関する制限はありません。唯一の要件は、クラスタ内のVMのライブマイグレーションをサポートするために必要な *RWXアクセスモード* が利用可能であることです。それ以外では、組織のVMとアプリケーションのニーズに最も適したストレージを選択することが適切です。
 
@@ -20,7 +20,7 @@ image::2025_spring/module-04-storage/00_Disk_Concepts.png[link=self, window=blan
 
 == VM の PVC を確認する
 
-このラボでは、先ほど作成した仮想マシン *fedora01* の背後にあるストレージを詳しく見ていきます。
+このラボでは、先ほど作成した仮想マシン *fedora01* のバックエンドストレージを詳しく見ていきます。
 
 . 左側のメニューで *Storage* -> *Persistent Volume Claims* をクリックして開始します。 *vmexamples-{user}* ネームスペースにいることを確認してください。前のセクションで *fedora01* 仮想マシンを作成したときに作成された *fedora01* PVCが表示されるはずです。
 +
@@ -98,7 +98,7 @@ sudo rm -rf /boot/grub2; sudo shutdown -r now
 +
 image::2025_spring/module-04-storage/10_Bootloader_Broken.png[link=self, window=blank, width=100%]
 +
-IMPORTANT: 前のステップでは、ゲスト内でオペレーティングシステムをシャットダウンしました。しかし、VMをホストしているポッドがまだ実行中であるため、OpenShift仮想化はデフォルトでポリシーに基づいて自動的に再起動します。この動作は、グローバルまたはVMごとに変更できます。
+IMPORTANT: 前のステップでは、ゲスト内でオペレーティングシステムをシャットダウンしました。しかし、VMをホストしているPodがまだ実行中であるため、OpenShift仮想化はデフォルトでポリシーに基づいて自動的に再起動します。この動作は、グローバルまたはVMごとに変更できます。
 
 . 右上の *Actions* ドロップダウンメニューまたはショートカットボタンを使用して、VMを *Stop* します。 このプロセスは、マシンが不安定な状態にあるため、正常なシャットダウンを試みるため、時間がかかる場合があります。*Actions* ドロップダウンメニューを再度クリックすると、*Force stop* オプションが表示されます。 ラボを継続するには、このオプションを使用してください。
 

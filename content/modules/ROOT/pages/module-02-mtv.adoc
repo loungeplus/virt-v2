@@ -171,7 +171,7 @@ image::2025_spring/module-02-mtv/16_VMs_Migrating_Details.png[link=self, window=
 image::2025_spring/module-02-mtv/17_VM_Migration_Stages.png[link=self, window=blank, width=100%]
 +
 
-IMPORTANT: 仮想マシンの移行には10Gbpsのネットワークを推奨しますが、当社のシミュレートされたラボ環境にはありません。このため、多くの参加者が同じタスクを並行して実行すると、実際の環境よりもこのタスクの実行速度が大幅に低下する可能性があります。このプロセスが完了するまでお待ちください。移行はバックグラウンドで完了するので、ロードショーの他のセクションに進むことができます。これらのマシンについては、後のモジュールで作業を再開します。
+IMPORTANT: 仮想マシンの移行には10Gbpsのネットワークを推奨しますが、当社のシミュレートされたラボ環境にはありません。このため、多くの参加者が同じタスクを並行して実行すると、実際の環境よりもこのタスクの実行速度が大幅に低下する可能性があります。移行はバックグラウンドで完了するので、ロードショーの他のセクションに進むことができます。これらのマシンについては、後のモジュールで作業を再開します。
 
 . 数分後、移行が正常に完了したことが確認できます。
 +
@@ -181,9 +181,9 @@ image::2025_spring/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=
 
 == まとめ
 
-このセクションでは、仮想化用マイグレーションツールキットについて説明し、VMware vSphere 環境から OpenShift Virtualization への既存の仮想マシンのマイグレーションを支援するために使用しました。 仮想化用マイグレーションツールキットに加えて、現在利用可能なマイグレーションツールキットは 2 つあります。 これらの組み合わせにより、組織のニーズに応じて、さまざまなタイプのワークロードを OpenShift クラスタ内およびクラスタ間で移動することができます。
+このセクションでは、Migration Toolkit for Virtualizationについて説明し、VMware vSphere 環境から OpenShift Virtualization への既存の仮想マシンのマイグレーションを支援するために使用しました。 Migration Toolkit for Virtualizationに加えて、現在利用可能なMigration Toolkitは 2 つあります。 これらの組み合わせにより、組織のニーズに応じて、さまざまなタイプのワークロードを OpenShift クラスタ内およびクラスタ間で移動することができます。
 
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/html/introduction_to_the_migration_toolkit_for_applications/index[Migration Toolkit for Applications] - 大規模なアプリケーションのコンテナおよび Kubernetes への移行を迅速化します。
 * https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/migration_toolkit_for_containers/about-mtc[Migration Toolkit for Containers] - OpenShift クラスタ間でステートフルなアプリケーションワークロードを移行します。
 
-これらのその他の移行ツールキットの詳細については、Red Hat アカウントチームまでお問い合わせください。
+これらのその他のMigration Toolkitの詳細については、Red Hat アカウントチームまでお問い合わせください。

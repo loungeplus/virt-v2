@@ -36,14 +36,14 @@ image::2025_spring/conclusion/01_Ebook.png[link=self, window=blank, width=50%]
 * コンテナに対するこれらのリソースの使用とアクセスを制御するのと同じ Kubernetes 機能を使用して、VM から CPU、メモリ、ストレージ、およびネットワークリソースの使用とアクセスを制御するために必要なスキル。
 * OpenShift Virtualizationの標準Kubernetes機能と拡張機能を使用してVMのHA（高可用性）を管理するためのサンプルアーキテクチャ。
 * OpenShift上のVMを、ストレージやデータベースなど、OpenShiftクラスター外のデータセンターサービスに接続するための戦略。
-* Migration Toolkit for Virtualizationのオペレーターを使用して、互換性のあるハイパーバイザーからOpenShift VirtualizationにVMを移行するための戦略。
+* Migration Toolkit for VirtualizationのOperatorを使用して、互換性のあるハイパーバイザーからOpenShift VirtualizationにVMを移行するための戦略。
 
 リンク https://www.redhat.com/en/services/training/managing-virtual-machines-red-hat-openshift-virtualization-exam[ここ^]をクリックするか、以下のQRコードをスキャンして詳細をご覧ください。
 
 
 image::2025_spring/conclusion/02_DO317_Training.png[link=self, window=blank, width=50%]
 
-=== 仮想化マイグレーションアセスメント
+=== Virtualization Migrationアセスメント
 
 * 2週間のオンサイトでのインタラクティブなワークショップとフォローアップレポート。
 * 経験豊富な Red Hat アーキテクトが、マイグレーションの旅を支援するための短期間のオンサイトワークショップを実施します。

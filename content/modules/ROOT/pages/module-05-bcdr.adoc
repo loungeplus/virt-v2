@@ -2,11 +2,11 @@
 
 == はじめに
 
-データ保護は、あらゆる企業ワークロードに関して重要な話題であり、OpenShift 仮想化環境における仮想マシンのバックアップとリカバリには、現在、数多くのオプションが存在します。これらのソリューションの多くは、OpenShiftのポッドを保護するのと同じ方法で機能します。仮想マシン、または複数の仮想マシンを含むネームスペースのバックアップを取得し、オブジェクトストレージバケットにリモートで保存することで、これを実現します。これらのバックアップには通常、仮想マシンを定義するメタデータおよびカスタムリソースに加えて、永続ストレージボリュームも含まれます。
+データ保護は、あらゆる企業ワークロードに関して重要な話題であり、OpenShift 仮想化環境における仮想マシンのバックアップとリカバリには、現在、数多くのオプションが存在します。これらのソリューションの多くは、OpenShiftのPodを保護するのと同じ方法で機能します。仮想マシン、または複数の仮想マシンを含むネームスペースのバックアップを取得し、オブジェクトストレージバケットにリモートで保存することで、これを実現します。これらのバックアップには通常、仮想マシンを定義するメタデータおよびカスタムリソースに加えて、永続ストレージボリュームも含まれます。
 
 Red Hatのソリューションには、以下が含まれます。
 
-* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: 仮想マシンを含む OpenShift オブジェクトのバックアップとリストアを行う、ストレージに依存しない方法を提供する Red Hat オペレーター。
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: 仮想マシンを含む OpenShift オブジェクトのバックアップとリストアを行う、ストレージに依存しない方法を提供する Red Hat Operator。
 * https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] および https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
 
 エコシステムパートナーソリューションには以下が含まれます。
@@ -24,13 +24,13 @@ NOTE:  これは、サポート対象のバックアップおよびリカバリ�
 このラボでは、OADP を使用して仮想マシンのバックアップとリストア操作を行います。
 
 [[review_operator]]
-== OADP オペレータを確認
+== OADP Operatorを確認
 
 . Administrator パースペクティブに移動し、左側のメニューで *Operators*、*Installed Operators* の順にクリックします。 プロジェクト *oadp-{user}* が選択されていることを確認します。 *OADP* と入力します 
 +
 image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
 
-. オペレータをクリックして詳細を表示します。
+. Operatorをクリックして詳細を表示します。
 
 . 利用可能な *Provided APIs* を確認します。 このモジュールでは、 *Backup* および *Restore* 機能を使用します。
 +
