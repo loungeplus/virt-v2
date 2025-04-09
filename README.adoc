@@ -12,7 +12,7 @@ https://github.com/rhpds/openshift-virt-roadshow-cnv-multi-user/tree/network
 
 [source,bash,role=execute,subs="attributes"]
 ----
-curl -sSL https://raw.githubusercontent.com/loungeplus/virt-v2/refs/heads/main/translation.sh | bash
+curl -sSL https://raw.githubusercontent.com/loungeplus/virt-v2/refs/heads/tmp_0410_0417/translation.sh | bash
 ----
 
 == Introduction
