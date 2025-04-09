@@ -31,13 +31,3 @@
 
 * xref:module-08-workingvms.adoc[仮想マシンとアプリケーションの操作]
 ** xref:module-08-workingvms.adoc#service_route[Servive/Routeによるアプリケーションの公開]
-
-* xref:module-09-networking.adoc[仮想マシンのネットワーク管理]
-** xref:module-09-networking.adoc#review[環境の確認]
-** xref:module-09-networking.adoc#nad[Network Attachment Definitionの作成]
-** xref:module-09-networking.adoc#attach[仮想マシンをネットワークに接続]
-** xref:module-09-networking.adoc#udn[User Defined Networks]
-
-* xref:conclusion.adoc[まとめ]
-** xref:conclusion.adoc#key_takeaways[主な成果]
-** xref:conclusion.adoc#additional_info[追加情報]
