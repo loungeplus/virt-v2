@@ -33,8 +33,6 @@ OpenShift Virtualizationは、仮想マシンを最新のKubernetesベースの�
 
 * _仮想マシンとアプリケーションの操作_：このセクションでは、インポートした仮想マシンを使用して、サービスとルートを通じてVMホストアプリケーションを公開する、いくつかのDay-2アクティビティを実行します。
 
-* _ネットワーク管理_: デフォルトでは、VM は OpenShift のPod Networkに接続されています。このセクションでは、新しい L2 ネットワークマッピングの作成と、直接ネットワーク接続のためのUser Difined Network (UDN) の利用について説明します。
-
 == OpenShift Virtualizationとは？
 
 * 現在サブスクライバーの方は、OpenShift のサブスクリプションの一部として OpenShift Virtualizationをご利用いただけます。OpenShift 4.5 以降、一般的に利用可能となっています。
