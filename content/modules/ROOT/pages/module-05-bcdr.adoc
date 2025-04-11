@@ -107,7 +107,7 @@ image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blan
 +
 image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=blank, width=100%]
 
-. 仮想マシンを停止し、停止したら *Actions* ドロップダウンをクリックし、VMを *Delete* するオプションを選択します。
+. *Actions* ドロップダウンをクリックし、 *Stop* オプションでVMを停止させます。VM停止後 *Delete* するオプションを選択します。
 +
 image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]
 
@@ -155,7 +155,7 @@ image::2025_spring/module-05-bcdr/12_Create_Restore_YAML.png[link=self, window=b
 +
 image::2025_spring/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%]
 
-. *Virtualization* に戻り、左側のメニューで *Virtual Machines* をクリックし、 *fedora02* 仮想マシンが復元されたことを確認します（*vmexamples-{user}* プロジェクト内）。 *Created* の値がかなり前の時間であることがわかります。
+. *Virtualization* に戻り、左側のメニューで *Virtual Machines* をクリックし、 *fedora02* 仮想マシンが復元されたことを確認します（*vmexamples-{user}* プロジェクト内）。 *Created* の値が少し前の時間であることがわかります。
 +
 image::2025_spring/module-05-bcdr/14_VM_Restored.png[link=self, window=blank, width=100%]
 
