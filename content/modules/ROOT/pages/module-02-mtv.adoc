@@ -112,9 +112,10 @@ NOTE: MTV 2.4 以降はプロジェクト/ネームスペースを認識し、�
 +
 image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
-. 移行元のソースプロバイダを選択するよう求められます。*VMware* のタイルをクリックします。
+. 移行元のソースプロバイダを選択するよう求められます。Plan nameを入力し、*VMware* のタイルをクリックします。
+* *Plan name*: move-webapp-vmware
 +
-image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window=blank, width=100%]
+image::2025_spring/module-02-mtv/Mod_08_VMware_Source_Provider.png[link=self, window=blank, width=100%]
 
 . 環境内の多数の仮想マシンが表示されます。用意されている検索バーを使用して、選択したい仮想マシンを検索するには、ユーザーアカウント：*{user}* を検索します。
 +
@@ -132,19 +133,16 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 
 . 次の画面では、マイグレーションプランの詳細を入力するよう求められます。いくつかの詳細項目はすでに記入されていますが、VMが正しいネームスペースに配置され、ネットワークとストレージのオプションが正しくマッピングされるように、いくつかの軽微な修正を行う必要があります。
 +
-マイグレーションプランに以下の値を入力してください: 
+マイグレーションプランに以下の値を入力し、*Create migration plan* ボタンをクリックします。
 
-* *Plan name*: move-webapp-vmware
 * *Target provider*: host
 * *Target namespace*: vmexamples-{user}
 * *Network map*: Pod Networking
 * *Storage map*: ocs-external-storagecluster-ceph-rbd
 +
 NOTE: ネットワークマップとストレージマップの両方が、ソースプロバイダー上で現在検出された仮想マシンが使用しているネットワークとデータストアを自動的に検出します。OpenShift側でそれぞれの値が正しく設定されていることを確認するだけで済みます。
-
-. *Create migration plan* ボタンをクリックします。
 +
-image::2025_spring/module-02-mtv/11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
+image::2025_spring/module-02-mtv/Mod_11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
 
 . 新しい画面に移動し、マイグレーションプランが準備中であることが表示されます。
 +
