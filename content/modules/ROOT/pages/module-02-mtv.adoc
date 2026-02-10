@@ -148,7 +148,7 @@ image::2025_spring/module-02-mtv/Mod_11_Create_Migration_Plan.png[link=self, win
 +
 image::2025_spring/module-02-mtv/12_Migration_Plan_Unready.png[link=self, window=blank, width=100%]
 
-. しばらくすると、プランが *Ready* になります。青い *Start Migration* ボタンをクリックして、移行プロセスを開始します。
+. しばらくすると、プランが *Ready* になります。*Start* ボタンをクリックして、移行プロセスを開始します。
 +
 image::2025_spring/module-02-mtv/13_Migration_Plan_Ready.png[link=self, window=blank, width=100%]
 
